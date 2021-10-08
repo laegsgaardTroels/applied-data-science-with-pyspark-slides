@@ -10,8 +10,8 @@
 <title>3_spark slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="assets/js/reveal.js/dist/reveal.css">
-<link rel="stylesheet" href="assets/js/reveal.js/dist/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="reveal.js/dist/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -14402,7 +14402,7 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="What-is-Apache-Spark">What is Apache Spark<a class="anchor-link" href="#What-is-Apache-Spark">&#182;</a></h1><p>Apache Spark is an open-source distributed general-purpose cluster-computing framework. It was created by <strong>Matei Zaharia</strong> during his PhD.</p>
 <p>Spark is written in Scala. Scala is written in Java. Spark runs on the Java Virtual Machine (JVM). A Java virtual machine (JVM) is a virtual machine that enables a computer to run Java programs as well as programs written in other languages that are also compiled to Java bytecode. Thats why one can run Spark using a Python programming API, it uses the <code>py4j</code> Python package to interact with the JVM. The Python programming API is called <strong>PySpark</strong>.</p>
-<p><img src="assets/images/spark_4engines.png" style="align: center; height: 200px; width: auto;"></img></p>
+<p><img src="images/spark_4engines.png" style="align: center; height: 200px; width: auto;"></img></p>
 
 </div>
 </div></section></section><section><section>
@@ -14451,7 +14451,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src="assets/images/spark_cluster_tasks_slot.png" style="align: center; height: 200px; width: auto;"></img></p>
+<p><img src="images/spark_cluster_tasks_slot.png" style="align: center; height: 200px; width: auto;"></img></p>
 
 </div>
 </div>
@@ -14513,7 +14513,7 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="The-SparkContext">The SparkContext<a class="anchor-link" href="#The-SparkContext">&#182;</a></h1><p>Driver programs access Spark through a SparkContext object, which represents a connection to a computing cluster.</p>
 <p>The SparkContext is initialized automatically in a Databricks notebook and assigned to the variable <code>sc</code>.</p>
-<p><img src="assets/images/spark_intro.png" style="align: center; height: 200px; width: auto;"></img></p>
+<p><img src="images/spark_intro.png" style="align: center; height: 200px; width: auto;"></img></p>
 
 </div>
 </div></section></section><section><section>
@@ -14521,7 +14521,7 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="The-SparkContext">The SparkContext<a class="anchor-link" href="#The-SparkContext">&#182;</a></h1><div class="highlight"><pre><span></span><span class="n">sc</span>
 </pre></div>
-<p><img src="assets/images/sc.png" style="align: center;height: 200px; width: auto;"></img></p>
+<p><img src="images/sc.png" style="align: center;height: 200px; width: auto;"></img></p>
 
 </div>
 </div></section></section><section><section>
@@ -14946,7 +14946,7 @@ div.jp-OutputPrompt {
 <strong>Actions</strong> on the other hand, compute a result based on an RDD, and either return it to the driver program or save it to an external storage system.</p>
 <p>Transformations and actions are different because of the way Spark computes RDDs. Although you can define new RDDs any time, Spark computes them only in a lazy fashion—that is, the first time they are used in an action.</p>
 <p>In above examples the <code>map()</code>, <code>flatMap</code> and <code>filter()</code> are transformations. <code>collect()</code>, <code>take()</code> and <code>count()</code> are actions.</p>
-<p><img src="assets/images/transformations_and_actions.png" style="align: center;height: 200px; width: auto;"></img></p>
+<p><img src="images/transformations_and_actions.png" style="align: center;height: 200px; width: auto;"></img></p>
 
 </div>
 </div></section></section><section><section>
@@ -15151,7 +15151,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>52.5 ms ± 6.33 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<pre>62.6 ms ± 9.65 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre>
 </div>
 </div>
@@ -15186,7 +15186,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>[Stage 100:===================================================&gt;(994 + 4) / 1000]</pre>
+<pre>                                                                                </pre>
 </div>
 </div>
 
@@ -15197,19 +15197,8 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>10.2 s ± 1.2 s per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<pre>9.89 s ± 673 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
 </div>
 </div>
 
@@ -15237,7 +15226,7 @@ require(
       waitSeconds: 15
     },
     [
-      "assets/js/reveal.js/dist/reveal.js"
+      "reveal.js/dist/reveal.js"
     ],
 
     function(Reveal){

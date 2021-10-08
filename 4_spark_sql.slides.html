@@ -10,8 +10,8 @@
 <title>4_spark_sql slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="assets/js/reveal.js/dist/reveal.css">
-<link rel="stylesheet" href="assets/js/reveal.js/dist/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="reveal.js/dist/theme/simple.css" id="theme">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -14572,7 +14572,7 @@ div.jp-OutputPrompt {
 <p>The SparkSession is initialized automatically in a Databricks notebook and assigned to the variable <code>spark</code>.</p>
 <div class="highlight"><pre><span></span><span class="n">spark</span>
 </pre></div>
-<p><img src="assets/images/spark_session.png" style="align: center;height: 200px; width: auto;"></img></p>
+<p><img src="images/spark_session.png" style="align: center;height: 200px; width: auto;"></img></p>
 
 </div>
 </div></section></section><section><section>
@@ -14581,7 +14581,7 @@ div.jp-OutputPrompt {
 <h1 id="The-SparkSession">The SparkSession<a class="anchor-link" href="#The-SparkSession">&#182;</a></h1><p>The SparkSession contains the SparkContext.</p>
 <div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span>
 </pre></div>
-<p><img src="assets/images/spark_session_sparkcontext.png" style="align: center;height: 200px; width: auto;"></img></p>
+<p><img src="images/spark_session_sparkcontext.png" style="align: center;height: 200px; width: auto;"></img></p>
 
 </div>
 </div></section></section><section><section>
@@ -14590,56 +14590,10 @@ div.jp-OutputPrompt {
 <h1 id="The-SparkSession">The SparkSession<a class="anchor-link" href="#The-SparkSession">&#182;</a></h1><p>The SparkSession is mostly used to read in sample data with spark.</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># df = spark.read.parquet(&#39;path/to/data.parquet&#39;)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Exercise-4.1.">Exercise 4.1.<a class="anchor-link" href="#Exercise-4.1.">&#182;</a></h1>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Example:-Dataset">Example: Dataset<a class="anchor-link" href="#Example:-Dataset">&#182;</a></h1><p>The dataset contains:</p>
-<ul>
-<li><code>year,month,day</code> Date of departure</li>
-<li><code>dep_time,arr_time</code> Actual departure and arrival times, local tz.</li>
-<li><code>sched_dep_time,sched_arr_time</code> Scheduled departure and arrival times, local time-zone.</li>
-<li><code>dep_delay,arr_delay</code> Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.</li>
-<li><code>hour,minute</code> Time of scheduled departure broken into hour and minutes.</li>
-<li><code>carrier</code> Two letter carrier abbreviation. </li>
-<li><code>tailnum</code> Plane tail number</li>
-<li><code>flight</code> Flight number</li>
-<li><code>origin,dest</code> Origin and destination. See airports for additional metadata.</li>
-<li><code>air_time</code> Amount of time spent in the air, in minutes</li>
-<li><code>distance</code> Distance between airports, in miles</li>
-<li><code>time_hour</code> Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be
-used to join flights data to weather data.</li>
-</ul>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="I/O">I/O<a class="anchor-link" href="#I/O">&#182;</a></h1><p>You read data into a DataFrame using the SparkSession.</p>
-
-</div>
-</div></section></section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/datasets/nycflights13/flights.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -14659,7 +14613,7 @@ used to join flights data to weather data.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 
 
 
@@ -14828,7 +14782,27 @@ used to join flights data to weather data.</li>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Types-and-Schema">Types and Schema<a class="anchor-link" href="#Types-and-Schema">&#182;</a></h1><p>The module <code>pyspark.sql.types</code> is the next most used submodule. It is used to create a schema, which is input to various functions, e.g. when initializing a DataFrame, and user defined functions (UDF).</p>
+<h1 id="Exercise-4.1.">Exercise 4.1.<a class="anchor-link" href="#Exercise-4.1.">&#182;</a></h1>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Example:-Dataset">Example: Dataset<a class="anchor-link" href="#Example:-Dataset">&#182;</a></h1><p>The dataset contains:</p>
+<ul>
+<li><code>year,month,day</code> Date of departure</li>
+<li><code>dep_time,arr_time</code> Actual departure and arrival times, local tz.</li>
+<li><code>sched_dep_time,sched_arr_time</code> Scheduled departure and arrival times, local time-zone.</li>
+<li><code>dep_delay,arr_delay</code> Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.</li>
+<li><code>hour,minute</code> Time of scheduled departure broken into hour and minutes.</li>
+<li><code>carrier</code> Two letter carrier abbreviation. </li>
+<li><code>tailnum</code> Plane tail number</li>
+<li><code>flight</code> Flight number</li>
+<li><code>origin,dest</code> Origin and destination. See airports for additional metadata.</li>
+<li><code>air_time</code> Amount of time spent in the air, in minutes</li>
+<li><code>distance</code> Distance between airports, in miles</li>
+<li><code>time_hour</code> Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be
+used to join flights data to weather data.</li>
+</ul>
 
 </div>
 </div></section></section><section><section>
@@ -14838,7 +14812,7 @@ used to join flights data to weather data.</li>
 <ul>
 <li><code>select(*cols)</code> Projects a set of expressions and returns a new DataFrame.</li>
 <li><code>withColumn(colName, col)</code> Returns a new DataFrame by adding a column or replacing the existing column that has the same name.</li>
-<li><code>where(condition) / filter(condition)</code> Filters rows using the given condition.</li>
+<li><code>where(condition)</code> / <code>filter(condition)</code> Filters rows using the given condition.</li>
 <li><code>orderBy(*cols, **kwargs)</code> Returns a new DataFrame sorted by the specified column(s).</li>
 <li><code>agg(*exprs)</code> Compute aggregates and returns the result as a DataFrame. Can be used on a grouped </li>
 <li><code>groupBy(*cols)</code> Groups the DataFrame using the specified columns, so we can run aggregation on them.
@@ -14847,7 +14821,7 @@ DataFrame as well to do the operation by group.</li>
 <p>By chaining these simple DataFrame methods together in a pipeline one can achieve rather complex transformations, so it makes sense to memorize these transformation methods.</p>
 
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Column-Expressions">Column Expressions<a class="anchor-link" href="#Column-Expressions">&#182;</a></h1><p>Besides methods on DataFrames one also use the <code>pyspark.sql.functions</code> module a lot, if you want to do any transformation you want to check if they're implemented here first, because they're optimized. And then, if the transformation is not implemented OR you can create it as an expression of the functions in this module, you can create it yourself.</p>
@@ -14856,7 +14830,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
@@ -14876,7 +14850,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
@@ -14901,7 +14875,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 
 
 
@@ -14974,7 +14948,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
@@ -14999,7 +14973,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 
 
 
@@ -15180,7 +15154,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
@@ -15217,7 +15191,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 
 
 
@@ -15392,13 +15366,13 @@ DataFrame as well to do the operation by group.</li>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="where(condition)-/-filter(condition)"><code>where(condition) / filter(condition)</code><a class="anchor-link" href="#where(condition)-/-filter(condition)">&#182;</a></h1><p>Filters rows using the given condition.</p>
+<h1 id="where(condition)-/-filter(condition)"><code>where(condition)</code> / <code>filter(condition)</code><a class="anchor-link" href="#where(condition)-/-filter(condition)">&#182;</a></h1><p>Filters rows using the given condition.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
@@ -15426,7 +15400,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
 
 
 
@@ -15598,12 +15572,12 @@ DataFrame as well to do the operation by group.</li>
 
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Exercise-4.2.">Exercise 4.2.<a class="anchor-link" href="#Exercise-4.2.">&#182;</a></h1>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="agg(*exprs)"><code>agg(*exprs)</code><a class="anchor-link" href="#agg(*exprs)">&#182;</a></h1><p>Compute aggregates and returns the result as a DataFrame. Can be used on a grouped DataFrame.</p>
@@ -15618,7 +15592,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
@@ -15638,7 +15612,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;row_count&quot;</span><span class="p">))</span>
@@ -15657,7 +15631,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 
 
 
@@ -15681,7 +15655,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;row_count&quot;</span><span class="p">)))</span>
@@ -15700,7 +15674,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 
 
 
@@ -15751,7 +15725,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">countDistinct</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)))</span>
@@ -15781,7 +15755,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 
 
 
@@ -15832,7 +15806,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)))</span>
@@ -15851,7 +15825,18 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 
 
 
@@ -15904,7 +15889,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;arr_delay&quot;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;arr_delay&quot;</span><span class="p">)))</span>
@@ -15923,7 +15908,18 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -15977,7 +15973,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s2">&quot;tailnum&quot;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">collect_list</span><span class="p">(</span><span class="s2">&quot;tailnum&quot;</span><span class="p">))</span>
@@ -15996,7 +15992,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
 
@@ -16020,7 +16016,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
@@ -16059,7 +16055,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 
 
 
@@ -16121,19 +16117,19 @@ DataFrame as well to do the operation by group.</li>
 
 </div>
 
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Exercise-4.3.">Exercise 4.3.<a class="anchor-link" href="#Exercise-4.3.">&#182;</a></h1>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Relational-Data">Relational Data<a class="anchor-link" href="#Relational-Data">&#182;</a></h1><p>Typically you have many tables of data, and you must combine them. Collectively, multiple tables of data are called relational data because it is the relations, not just the individual datasets, that are important..</p>
-<p><img src="assets/images/relational_nycflights.png" alt="Missing" style='max-width:80%; max-height:100%;'></p>
+<p><img src="images/relational_nycflights.png" alt="Missing" style='max-width:80%; max-height:100%;'></p>
 
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Relational-Data">Relational Data<a class="anchor-link" href="#Relational-Data">&#182;</a></h1><p>The variables used to connect each pair of tables are called keys. A key is a variable (or set of variables) that uniquely identifies an observation.</p>
@@ -16144,7 +16140,7 @@ DataFrame as well to do the operation by group.</li>
 <li><p>A <strong>foreign key</strong> uniquely identifies an observation in another table.</p>
 </li>
 </ul>
-<p><img src="assets/images/relational_nycflights.png" alt="Missing" style='max-width:50%; max-height:100%;'></p>
+<p><img src="images/relational_nycflights.png" alt="Missing" style='max-width:50%; max-height:100%;'></p>
 
 </div>
 </div></section></section><section><section>
@@ -16159,7 +16155,7 @@ DataFrame as well to do the operation by group.</li>
 </ul>
 <p>Inner and left are the two most used join types, left_anti is useful for filtering.</p>
 <p>A cross join seems ideally for some mathematical computations, but is almost never useful in practice, it is too computationally expensive because the number of rows explodes, if there are m rows in the first dataframe and n in the other then the resulting dataframe will have m x n rows.</p>
-<p><img src="assets/images/join-types.png" alt=""></p>
+<p><img src="images/join_types.png" alt="Missing" style='max-width:50%; max-height:100%;'></p>
 
 </div>
 </div></section></section><section><section>
@@ -16174,10 +16170,16 @@ DataFrame as well to do the operation by group.</li>
 <p>You should only use an UDF if you can't achieve what you want with <code>pyspark.sql.functions</code>.</p>
 
 </div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Types-and-Schema">Types and Schema<a class="anchor-link" href="#Types-and-Schema">&#182;</a></h1><p>The module <code>pyspark.sql.types</code> is the next most used submodule. It is used to create a schema, which is input to various functions, e.g. when initializing a DataFrame, and user defined functions (UDF).</p>
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
@@ -16210,7 +16212,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 
 
 
@@ -16279,15 +16281,14 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Exercise-4.5.">Exercise 4.5.<a class="anchor-link" href="#Exercise-4.5.">&#182;</a></h1>
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Window-Functions">Window Functions<a class="anchor-link" href="#Window-Functions">&#182;</a></h1><p>You can also use window functions to carry out some unique aggregations by either computing some aggregation on a specific “window” of data, which you define by using a reference to the current data. This window specification determines which rows will be passed in to this function. Now this is a bit abstract and probably similar to a standard group-by, so let’s differentiate them a bit more.</p>
 <p>A group-by takes data, and every row can go only into one grouping. A window function calculates a return value for every input row of a table based on a group of rows, called a frame. Each row can fall into one or more frames. A common use case is to take a look at a rolling average of some value for which each row represents one day. If you were to do this, each row would end up in seven different frames. We cover defining frames a little later, but for your reference, Spark supports three kinds of window functions: ranking functions, analytic functions, and aggregate functions.</p>
-<p><img src="tables/window_functions.png" alt="window_function"></p>
 
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>A <code>Window</code> object has 4 method calls</p>
@@ -16300,7 +16301,7 @@ DataFrame as well to do the operation by group.</li>
 <p>It is recommended to use <code>Window.unboundedPreceding</code>, <code>Window.unboundedFollowing</code>, and <code>Window.currentRow</code> to specify special boundary values.</p>
 
 </div>
-</div>
+</div><div class="fragment">
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="First-and-Last">First and Last<a class="anchor-link" href="#First-and-Last">&#182;</a></h2><p>You can get the first and last values from a DataFrame by using these two obviously named functions. This will be based on the rows in the DataFrame, not on the values in the DataFrame</p>
@@ -16309,7 +16310,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="s2">&quot;dest&quot;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="s2">&quot;dest&quot;</span><span class="p">)))</span>
@@ -16339,7 +16340,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 
 
 
@@ -16383,7 +16384,7 @@ DataFrame as well to do the operation by group.</li>
 
 </div>
 
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Exercise-4.6.">Exercise 4.6.<a class="anchor-link" href="#Exercise-4.6.">&#182;</a></h1>
@@ -16402,7 +16403,7 @@ require(
       waitSeconds: 15
     },
     [
-      "assets/js/reveal.js/dist/reveal.js"
+      "reveal.js/dist/reveal.js"
     ],
 
     function(Reveal){
