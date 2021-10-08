@@ -1,15 +1,1 @@
-@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
-@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
-
-body {
-    font-family: 'Droid Serif';
-    background-image: url('assets/images/TI.jpg');
-    background-repeat: no-repeat;
-    background-position: 0px 10px 0px 10px;
-}
-h1, h2, h3 {
-    font-family: 'Yanone Kaffeesatz';
-    font-weight: normal;
-}
-.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+@import 'bootstrap/bootstrap';
