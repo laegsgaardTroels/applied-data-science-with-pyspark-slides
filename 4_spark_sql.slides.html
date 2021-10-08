@@ -14462,11 +14462,52 @@ div.jp-OutputPrompt {
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(name=&#39;John Doe&#39;, age=&#39;48&#39;, height=&#39;190&#39;),
- Row(name=&#39;Jane Doe&#39;, age=&#39;20&#39;, height=&#39;188&#39;),
- Row(name=&#39;John Low&#39;, age=&#39;28&#39;, height=&#39;150&#39;)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>age</th>
+      <th>height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>John Doe</td>
+      <td>48</td>
+      <td>190</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Jane Doe</td>
+      <td>20</td>
+      <td>188</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>John Low</td>
+      <td>28</td>
+      <td>150</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -14622,13 +14663,160 @@ used to join flights data to weather data.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;517&#39;, sched_dep_time=&#39;515&#39;, dep_delay=&#39;2&#39;, arr_time=&#39;830&#39;, sched_arr_time=&#39;819&#39;, arr_delay=&#39;11&#39;, carrier=&#39;UA&#39;, flight=&#39;1545&#39;, tailnum=&#39;N14228&#39;, origin=&#39;EWR&#39;, dest=&#39;IAH&#39;, air_time=&#39;227&#39;, distance=&#39;1400&#39;, hour=&#39;5&#39;, minute=&#39;15&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;533&#39;, sched_dep_time=&#39;529&#39;, dep_delay=&#39;4&#39;, arr_time=&#39;850&#39;, sched_arr_time=&#39;830&#39;, arr_delay=&#39;20&#39;, carrier=&#39;UA&#39;, flight=&#39;1714&#39;, tailnum=&#39;N24211&#39;, origin=&#39;LGA&#39;, dest=&#39;IAH&#39;, air_time=&#39;227&#39;, distance=&#39;1416&#39;, hour=&#39;5&#39;, minute=&#39;29&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;542&#39;, sched_dep_time=&#39;540&#39;, dep_delay=&#39;2&#39;, arr_time=&#39;923&#39;, sched_arr_time=&#39;850&#39;, arr_delay=&#39;33&#39;, carrier=&#39;AA&#39;, flight=&#39;1141&#39;, tailnum=&#39;N619AA&#39;, origin=&#39;JFK&#39;, dest=&#39;MIA&#39;, air_time=&#39;160&#39;, distance=&#39;1089&#39;, hour=&#39;5&#39;, minute=&#39;40&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;544&#39;, sched_dep_time=&#39;545&#39;, dep_delay=&#39;-1&#39;, arr_time=&#39;1004&#39;, sched_arr_time=&#39;1022&#39;, arr_delay=&#39;-18&#39;, carrier=&#39;B6&#39;, flight=&#39;725&#39;, tailnum=&#39;N804JB&#39;, origin=&#39;JFK&#39;, dest=&#39;BQN&#39;, air_time=&#39;183&#39;, distance=&#39;1576&#39;, hour=&#39;5&#39;, minute=&#39;45&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;554&#39;, sched_dep_time=&#39;600&#39;, dep_delay=&#39;-6&#39;, arr_time=&#39;812&#39;, sched_arr_time=&#39;837&#39;, arr_delay=&#39;-25&#39;, carrier=&#39;DL&#39;, flight=&#39;461&#39;, tailnum=&#39;N668DN&#39;, origin=&#39;LGA&#39;, dest=&#39;ATL&#39;, air_time=&#39;116&#39;, distance=&#39;762&#39;, hour=&#39;6&#39;, minute=&#39;0&#39;, time_hour=&#39;2013-01-01 06:00:00&#39;)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517</td>
+      <td>515</td>
+      <td>2</td>
+      <td>830</td>
+      <td>819</td>
+      <td>11</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01 05:00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533</td>
+      <td>529</td>
+      <td>4</td>
+      <td>850</td>
+      <td>830</td>
+      <td>20</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01 05:00:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542</td>
+      <td>540</td>
+      <td>2</td>
+      <td>923</td>
+      <td>850</td>
+      <td>33</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01 05:00:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544</td>
+      <td>545</td>
+      <td>-1</td>
+      <td>1004</td>
+      <td>1022</td>
+      <td>-18</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01 05:00:00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554</td>
+      <td>600</td>
+      <td>-6</td>
+      <td>812</td>
+      <td>837</td>
+      <td>-25</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01 06:00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -14717,13 +14905,58 @@ DataFrame as well to do the operation by group.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(mean_speed=370.04405286343615, gain=9.0),
- Row(mean_speed=374.273127753304, gain=16.0),
- Row(mean_speed=408.375, gain=31.0),
- Row(mean_speed=516.7213114754098, gain=-17.0),
- Row(mean_speed=394.13793103448273, gain=-19.0)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_speed</th>
+      <th>gain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>370.044053</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>374.273128</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>408.375000</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>516.721311</td>
+      <td>-17.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>394.137931</td>
+      <td>-19.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -14770,13 +15003,166 @@ DataFrame as well to do the operation by group.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;517&#39;, sched_dep_time=&#39;515&#39;, dep_delay=&#39;2&#39;, arr_time=&#39;830&#39;, sched_arr_time=&#39;819&#39;, arr_delay=&#39;11&#39;, carrier=&#39;UA&#39;, flight=&#39;1545&#39;, tailnum=&#39;N14228&#39;, origin=&#39;EWR&#39;, dest=&#39;IAH&#39;, air_time=&#39;227&#39;, distance=&#39;1400&#39;, hour=&#39;5&#39;, minute=&#39;15&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;, mean_speed=370.04405286343615),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;533&#39;, sched_dep_time=&#39;529&#39;, dep_delay=&#39;4&#39;, arr_time=&#39;850&#39;, sched_arr_time=&#39;830&#39;, arr_delay=&#39;20&#39;, carrier=&#39;UA&#39;, flight=&#39;1714&#39;, tailnum=&#39;N24211&#39;, origin=&#39;LGA&#39;, dest=&#39;IAH&#39;, air_time=&#39;227&#39;, distance=&#39;1416&#39;, hour=&#39;5&#39;, minute=&#39;29&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;, mean_speed=374.273127753304),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;542&#39;, sched_dep_time=&#39;540&#39;, dep_delay=&#39;2&#39;, arr_time=&#39;923&#39;, sched_arr_time=&#39;850&#39;, arr_delay=&#39;33&#39;, carrier=&#39;AA&#39;, flight=&#39;1141&#39;, tailnum=&#39;N619AA&#39;, origin=&#39;JFK&#39;, dest=&#39;MIA&#39;, air_time=&#39;160&#39;, distance=&#39;1089&#39;, hour=&#39;5&#39;, minute=&#39;40&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;, mean_speed=408.375),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;544&#39;, sched_dep_time=&#39;545&#39;, dep_delay=&#39;-1&#39;, arr_time=&#39;1004&#39;, sched_arr_time=&#39;1022&#39;, arr_delay=&#39;-18&#39;, carrier=&#39;B6&#39;, flight=&#39;725&#39;, tailnum=&#39;N804JB&#39;, origin=&#39;JFK&#39;, dest=&#39;BQN&#39;, air_time=&#39;183&#39;, distance=&#39;1576&#39;, hour=&#39;5&#39;, minute=&#39;45&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;, mean_speed=516.7213114754098),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;554&#39;, sched_dep_time=&#39;600&#39;, dep_delay=&#39;-6&#39;, arr_time=&#39;812&#39;, sched_arr_time=&#39;837&#39;, arr_delay=&#39;-25&#39;, carrier=&#39;DL&#39;, flight=&#39;461&#39;, tailnum=&#39;N668DN&#39;, origin=&#39;LGA&#39;, dest=&#39;ATL&#39;, air_time=&#39;116&#39;, distance=&#39;762&#39;, hour=&#39;6&#39;, minute=&#39;0&#39;, time_hour=&#39;2013-01-01 06:00:00&#39;, mean_speed=394.13793103448273)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+      <th>mean_speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517</td>
+      <td>515</td>
+      <td>2</td>
+      <td>830</td>
+      <td>819</td>
+      <td>11</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>370.044053</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533</td>
+      <td>529</td>
+      <td>4</td>
+      <td>850</td>
+      <td>830</td>
+      <td>20</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>374.273128</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542</td>
+      <td>540</td>
+      <td>2</td>
+      <td>923</td>
+      <td>850</td>
+      <td>33</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>408.375000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544</td>
+      <td>545</td>
+      <td>-1</td>
+      <td>1004</td>
+      <td>1022</td>
+      <td>-18</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>516.721311</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554</td>
+      <td>600</td>
+      <td>-6</td>
+      <td>812</td>
+      <td>837</td>
+      <td>-25</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01 06:00:00</td>
+      <td>394.137931</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -14835,13 +15221,166 @@ DataFrame as well to do the operation by group.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(year=&#39;2013&#39;, month=&#39;8&#39;, day=&#39;6&#39;, dep_time=&#39;1849&#39;, sched_dep_time=&#39;1855&#39;, dep_delay=&#39;-6&#39;, arr_time=&#39;2334&#39;, sched_arr_time=&#39;2050&#39;, arr_delay=None, carrier=&#39;MQ&#39;, flight=&#39;3349&#39;, tailnum=&#39;N514MQ&#39;, origin=&#39;LGA&#39;, dest=&#39;MSP&#39;, air_time=None, distance=&#39;1020&#39;, hour=&#39;18&#39;, minute=&#39;55&#39;, time_hour=&#39;2013-08-06 18:00:00&#39;, mean_speed=None),
- Row(year=&#39;2013&#39;, month=&#39;8&#39;, day=&#39;6&#39;, dep_time=None, sched_dep_time=&#39;1003&#39;, dep_delay=None, arr_time=None, sched_arr_time=&#39;1135&#39;, arr_delay=None, carrier=&#39;FL&#39;, flight=&#39;353&#39;, tailnum=&#39;N906AT&#39;, origin=&#39;LGA&#39;, dest=&#39;CAK&#39;, air_time=None, distance=&#39;397&#39;, hour=&#39;10&#39;, minute=&#39;3&#39;, time_hour=&#39;2013-08-06 10:00:00&#39;, mean_speed=None),
- Row(year=&#39;2013&#39;, month=&#39;8&#39;, day=&#39;6&#39;, dep_time=&#39;2018&#39;, sched_dep_time=&#39;1945&#39;, dep_delay=&#39;33&#39;, arr_time=&#39;2348&#39;, sched_arr_time=&#39;2238&#39;, arr_delay=None, carrier=&#39;DL&#39;, flight=&#39;1629&#39;, tailnum=&#39;N3759&#39;, origin=&#39;JFK&#39;, dest=&#39;LAS&#39;, air_time=None, distance=&#39;2248&#39;, hour=&#39;19&#39;, minute=&#39;45&#39;, time_hour=&#39;2013-08-06 19:00:00&#39;, mean_speed=None),
- Row(year=&#39;2013&#39;, month=&#39;8&#39;, day=&#39;5&#39;, dep_time=None, sched_dep_time=&#39;1604&#39;, dep_delay=None, arr_time=None, sched_arr_time=&#39;1748&#39;, arr_delay=None, carrier=&#39;EV&#39;, flight=&#39;5432&#39;, tailnum=&#39;N611QX&#39;, origin=&#39;LGA&#39;, dest=&#39;BNA&#39;, air_time=None, distance=&#39;764&#39;, hour=&#39;16&#39;, minute=&#39;4&#39;, time_hour=&#39;2013-08-05 16:00:00&#39;, mean_speed=None),
- Row(year=&#39;2013&#39;, month=&#39;8&#39;, day=&#39;6&#39;, dep_time=None, sched_dep_time=&#39;1411&#39;, dep_delay=None, arr_time=None, sched_arr_time=&#39;1702&#39;, arr_delay=None, carrier=&#39;B6&#39;, flight=&#39;1883&#39;, tailnum=&#39;N597JB&#39;, origin=&#39;JFK&#39;, dest=&#39;MCO&#39;, air_time=None, distance=&#39;944&#39;, hour=&#39;14&#39;, minute=&#39;11&#39;, time_hour=&#39;2013-08-06 14:00:00&#39;, mean_speed=None)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+      <th>mean_speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>6</td>
+      <td>1849</td>
+      <td>1855</td>
+      <td>-6</td>
+      <td>2334</td>
+      <td>2050</td>
+      <td>None</td>
+      <td>MQ</td>
+      <td>3349</td>
+      <td>N514MQ</td>
+      <td>LGA</td>
+      <td>MSP</td>
+      <td>None</td>
+      <td>1020</td>
+      <td>18</td>
+      <td>55</td>
+      <td>2013-08-06 18:00:00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>6</td>
+      <td>None</td>
+      <td>1003</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1135</td>
+      <td>None</td>
+      <td>FL</td>
+      <td>353</td>
+      <td>N906AT</td>
+      <td>LGA</td>
+      <td>CAK</td>
+      <td>None</td>
+      <td>397</td>
+      <td>10</td>
+      <td>3</td>
+      <td>2013-08-06 10:00:00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>6</td>
+      <td>2018</td>
+      <td>1945</td>
+      <td>33</td>
+      <td>2348</td>
+      <td>2238</td>
+      <td>None</td>
+      <td>DL</td>
+      <td>1629</td>
+      <td>N3759</td>
+      <td>JFK</td>
+      <td>LAS</td>
+      <td>None</td>
+      <td>2248</td>
+      <td>19</td>
+      <td>45</td>
+      <td>2013-08-06 19:00:00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>5</td>
+      <td>None</td>
+      <td>1604</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1748</td>
+      <td>None</td>
+      <td>EV</td>
+      <td>5432</td>
+      <td>N611QX</td>
+      <td>LGA</td>
+      <td>BNA</td>
+      <td>None</td>
+      <td>764</td>
+      <td>16</td>
+      <td>4</td>
+      <td>2013-08-05 16:00:00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>6</td>
+      <td>None</td>
+      <td>1411</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1702</td>
+      <td>None</td>
+      <td>B6</td>
+      <td>1883</td>
+      <td>N597JB</td>
+      <td>JFK</td>
+      <td>MCO</td>
+      <td>None</td>
+      <td>944</td>
+      <td>14</td>
+      <td>11</td>
+      <td>2013-08-06 14:00:00</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -14891,13 +15430,166 @@ DataFrame as well to do the operation by group.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;517&#39;, sched_dep_time=&#39;515&#39;, dep_delay=&#39;2&#39;, arr_time=&#39;830&#39;, sched_arr_time=&#39;819&#39;, arr_delay=&#39;11&#39;, carrier=&#39;UA&#39;, flight=&#39;1545&#39;, tailnum=&#39;N14228&#39;, origin=&#39;EWR&#39;, dest=&#39;IAH&#39;, air_time=&#39;227&#39;, distance=&#39;1400&#39;, hour=&#39;5&#39;, minute=&#39;15&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;, mean_speed=370.04405286343615),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;533&#39;, sched_dep_time=&#39;529&#39;, dep_delay=&#39;4&#39;, arr_time=&#39;850&#39;, sched_arr_time=&#39;830&#39;, arr_delay=&#39;20&#39;, carrier=&#39;UA&#39;, flight=&#39;1714&#39;, tailnum=&#39;N24211&#39;, origin=&#39;LGA&#39;, dest=&#39;IAH&#39;, air_time=&#39;227&#39;, distance=&#39;1416&#39;, hour=&#39;5&#39;, minute=&#39;29&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;, mean_speed=374.273127753304),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;554&#39;, sched_dep_time=&#39;600&#39;, dep_delay=&#39;-6&#39;, arr_time=&#39;812&#39;, sched_arr_time=&#39;837&#39;, arr_delay=&#39;-25&#39;, carrier=&#39;DL&#39;, flight=&#39;461&#39;, tailnum=&#39;N668DN&#39;, origin=&#39;LGA&#39;, dest=&#39;ATL&#39;, air_time=&#39;116&#39;, distance=&#39;762&#39;, hour=&#39;6&#39;, minute=&#39;0&#39;, time_hour=&#39;2013-01-01 06:00:00&#39;, mean_speed=394.13793103448273),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;554&#39;, sched_dep_time=&#39;558&#39;, dep_delay=&#39;-4&#39;, arr_time=&#39;740&#39;, sched_arr_time=&#39;728&#39;, arr_delay=&#39;12&#39;, carrier=&#39;UA&#39;, flight=&#39;1696&#39;, tailnum=&#39;N39463&#39;, origin=&#39;EWR&#39;, dest=&#39;ORD&#39;, air_time=&#39;150&#39;, distance=&#39;719&#39;, hour=&#39;5&#39;, minute=&#39;58&#39;, time_hour=&#39;2013-01-01 05:00:00&#39;, mean_speed=287.6),
- Row(year=&#39;2013&#39;, month=&#39;1&#39;, day=&#39;1&#39;, dep_time=&#39;557&#39;, sched_dep_time=&#39;600&#39;, dep_delay=&#39;-3&#39;, arr_time=&#39;709&#39;, sched_arr_time=&#39;723&#39;, arr_delay=&#39;-14&#39;, carrier=&#39;EV&#39;, flight=&#39;5708&#39;, tailnum=&#39;N829AS&#39;, origin=&#39;LGA&#39;, dest=&#39;IAD&#39;, air_time=&#39;53&#39;, distance=&#39;229&#39;, hour=&#39;6&#39;, minute=&#39;0&#39;, time_hour=&#39;2013-01-01 06:00:00&#39;, mean_speed=259.24528301886795)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+      <th>mean_speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517</td>
+      <td>515</td>
+      <td>2</td>
+      <td>830</td>
+      <td>819</td>
+      <td>11</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>370.044053</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533</td>
+      <td>529</td>
+      <td>4</td>
+      <td>850</td>
+      <td>830</td>
+      <td>20</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>374.273128</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554</td>
+      <td>600</td>
+      <td>-6</td>
+      <td>812</td>
+      <td>837</td>
+      <td>-25</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01 06:00:00</td>
+      <td>394.137931</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554</td>
+      <td>558</td>
+      <td>-4</td>
+      <td>740</td>
+      <td>728</td>
+      <td>12</td>
+      <td>UA</td>
+      <td>1696</td>
+      <td>N39463</td>
+      <td>EWR</td>
+      <td>ORD</td>
+      <td>150</td>
+      <td>719</td>
+      <td>5</td>
+      <td>58</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>287.600000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>557</td>
+      <td>600</td>
+      <td>-3</td>
+      <td>709</td>
+      <td>723</td>
+      <td>-14</td>
+      <td>EV</td>
+      <td>5708</td>
+      <td>N829AS</td>
+      <td>LGA</td>
+      <td>IAD</td>
+      <td>53</td>
+      <td>229</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01 06:00:00</td>
+      <td>259.245283</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15008,24 +15700,40 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(row_count=336776)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>row_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>336776</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15077,9 +15785,36 @@ DataFrame as well to do the operation by group.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(count(DISTINCT year)=1)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count(DISTINCT year)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15116,24 +15851,42 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(min(month)=&#39;1&#39;, max(month)=&#39;9&#39;)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>min(month)</th>
+      <th>max(month)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15170,24 +15923,42 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(sum(arr_delay)=2257174.0, avg(arr_delay)=6.89537675731489)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sum(arr_delay)</th>
+      <th>avg(arr_delay)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2257174.0</td>
+      <td>6.895377</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15292,11 +16063,56 @@ DataFrame as well to do the operation by group.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(origin=&#39;LGA&#39;, count=104662, mean_distance=779.8356710171792, mean_delay=5.783488234130908),
- Row(origin=&#39;JFK&#39;, count=111279, mean_distance=1266.249076645189, mean_delay=5.551481036679838),
- Row(origin=&#39;EWR&#39;, count=120835, mean_distance=1056.742789754624, mean_delay=9.107054735458092)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>origin</th>
+      <th>count</th>
+      <th>mean_distance</th>
+      <th>mean_delay</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>LGA</td>
+      <td>104662</td>
+      <td>779.835671</td>
+      <td>5.783488</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>JFK</td>
+      <td>111279</td>
+      <td>1266.249077</td>
+      <td>5.551481</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>EWR</td>
+      <td>120835</td>
+      <td>1056.742790</td>
+      <td>9.107055</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15398,13 +16214,58 @@ DataFrame as well to do the operation by group.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(arr_delay=&#39;11&#39;, arr_delay_squared=121.0),
- Row(arr_delay=&#39;20&#39;, arr_delay_squared=400.0),
- Row(arr_delay=&#39;33&#39;, arr_delay_squared=1089.0),
- Row(arr_delay=&#39;-18&#39;, arr_delay_squared=324.0),
- Row(arr_delay=&#39;-25&#39;, arr_delay_squared=625.0)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>arr_delay</th>
+      <th>arr_delay_squared</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>11</td>
+      <td>121.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>20</td>
+      <td>400.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>33</td>
+      <td>1089.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-18</td>
+      <td>324.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-25</td>
+      <td>625.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15482,9 +16343,38 @@ DataFrame as well to do the operation by group.</li>
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[Row(first(dest)=&#39;IAH&#39;, last(dest)=&#39;RDU&#39;)]</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>first(dest)</th>
+      <th>last(dest)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>IAH</td>
+      <td>RDU</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
