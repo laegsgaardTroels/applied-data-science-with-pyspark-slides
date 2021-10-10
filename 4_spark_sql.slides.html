@@ -14907,7 +14907,7 @@ Driver stacktrace:
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/10 13:33:10 ERROR Executor: Exception in task 0.0 in stage 3.0 (TID 5)
+<pre>21/10/10 16:59:53 ERROR Executor: Exception in task 0.0 in stage 3.0 (TID 5)
 org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
 	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
 	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
@@ -14952,7 +14952,7 @@ Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air 
 	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:151)
 	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
 	... 25 more
-21/10/10 13:33:10 WARN TaskSetManager: Lost task 0.0 in stage 3.0 (TID 5) (192.168.0.14 executor driver): org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
+21/10/10 16:59:53 WARN TaskSetManager: Lost task 0.0 in stage 3.0 (TID 5) (192.168.0.14 executor driver): org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
 	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
 	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
 	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
@@ -14997,7 +14997,7 @@ Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air 
 	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
 	... 25 more
 
-21/10/10 13:33:10 ERROR TaskSetManager: Task 0 in stage 3.0 failed 1 times; aborting job
+21/10/10 16:59:53 ERROR TaskSetManager: Task 0 in stage 3.0 failed 1 times; aborting job
 </pre>
 </div>
 </div>
@@ -16010,7 +16010,7 @@ DataFrame as well to do the operation by group.</li>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/10 13:33:16 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
+<pre>21/10/10 16:59:59 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
 </pre>
 </div>
 </div>
@@ -16119,7 +16119,7 @@ DataFrame as well to do the operation by group.</li>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/10 13:33:16 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
+<pre>21/10/10 17:00:00 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
 </pre>
 </div>
 </div>
@@ -16259,7 +16259,7 @@ DataFrame as well to do the operation by group.</li>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/10 13:33:16 WARN Column: Constructing trivially true equals predicate, &#39;null &lt;=&gt; null&#39;. Perhaps you need to use aliases.
+<pre>21/10/10 17:00:00 WARN Column: Constructing trivially true equals predicate, &#39;null &lt;=&gt; null&#39;. Perhaps you need to use aliases.
 </pre>
 </div>
 </div>
@@ -17585,6 +17585,17 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 
 
@@ -17815,6 +17826,17 @@ DataFrame as well to do the operation by group.</li>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
 
 <div class="jp-OutputArea-child">
 
