@@ -14562,32 +14562,14 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>DataFrame's also have transfomations and actions.</p>
+<p>DataFrames are immutable like RDDs, you can modify them through operations that create  new,  different  DataFrames,  with  different  columns.</p>
 
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="The-SparkSession">The SparkSession<a class="anchor-link" href="#The-SparkSession">&#182;</a></h1><p><code>SparkSession(sparkContext, jsparkSession=None)</code> The entry point to programming Spark with the Dataset and DataFrame API.</p>
-<p>The SparkSession is initialized automatically in a Databricks notebook and assigned to the variable <code>spark</code>.</p>
-<div class="highlight"><pre><span></span><span class="n">spark</span>
-</pre></div>
-<p><img src="images/spark_session.png" style="align: center;height: 200px; width: auto;"></img></p>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="The-SparkSession">The SparkSession<a class="anchor-link" href="#The-SparkSession">&#182;</a></h1><p>The SparkSession contains the SparkContext.</p>
-<div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span>
-</pre></div>
-<p><img src="images/spark_session_sparkcontext.png" style="align: center;height: 200px; width: auto;"></img></p>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="The-SparkSession">The SparkSession<a class="anchor-link" href="#The-SparkSession">&#182;</a></h1><p>The SparkSession is mostly used to read in sample data with spark.</p>
+<h1 id="Schemas">Schemas<a class="anchor-link" href="#Schemas">&#182;</a></h1><p>A schema defines the column names and types of a DataFrame. We can either let a data source define the schema (called schema-on-read) or we can define it explicitly ourselves. For ad hoc analysis, schema-on-read usually works just fine. When using Spark for production Extract, Transform, and Load (ETL), it is often a good idea to define your schemas manually, especially when working with untyped data sources like CSV and JSON because schema inference can vary depending on the type of data that you read in.</p>
+<p>The schema is an attribute af a pyspark DataFrame as you can see below.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14596,8 +14578,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/datasets/nycflights13/flights.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">schema</span>
 </pre></div>
 
      </div>
@@ -14617,160 +14598,9 @@ div.jp-OutputPrompt {
 
 
 
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>day</th>
-      <th>dep_time</th>
-      <th>sched_dep_time</th>
-      <th>dep_delay</th>
-      <th>arr_time</th>
-      <th>sched_arr_time</th>
-      <th>arr_delay</th>
-      <th>carrier</th>
-      <th>flight</th>
-      <th>tailnum</th>
-      <th>origin</th>
-      <th>dest</th>
-      <th>air_time</th>
-      <th>distance</th>
-      <th>hour</th>
-      <th>minute</th>
-      <th>time_hour</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>517</td>
-      <td>515</td>
-      <td>2</td>
-      <td>830</td>
-      <td>819</td>
-      <td>11</td>
-      <td>UA</td>
-      <td>1545</td>
-      <td>N14228</td>
-      <td>EWR</td>
-      <td>IAH</td>
-      <td>227</td>
-      <td>1400</td>
-      <td>5</td>
-      <td>15</td>
-      <td>2013-01-01 05:00:00</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>533</td>
-      <td>529</td>
-      <td>4</td>
-      <td>850</td>
-      <td>830</td>
-      <td>20</td>
-      <td>UA</td>
-      <td>1714</td>
-      <td>N24211</td>
-      <td>LGA</td>
-      <td>IAH</td>
-      <td>227</td>
-      <td>1416</td>
-      <td>5</td>
-      <td>29</td>
-      <td>2013-01-01 05:00:00</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>542</td>
-      <td>540</td>
-      <td>2</td>
-      <td>923</td>
-      <td>850</td>
-      <td>33</td>
-      <td>AA</td>
-      <td>1141</td>
-      <td>N619AA</td>
-      <td>JFK</td>
-      <td>MIA</td>
-      <td>160</td>
-      <td>1089</td>
-      <td>5</td>
-      <td>40</td>
-      <td>2013-01-01 05:00:00</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>544</td>
-      <td>545</td>
-      <td>-1</td>
-      <td>1004</td>
-      <td>1022</td>
-      <td>-18</td>
-      <td>B6</td>
-      <td>725</td>
-      <td>N804JB</td>
-      <td>JFK</td>
-      <td>BQN</td>
-      <td>183</td>
-      <td>1576</td>
-      <td>5</td>
-      <td>45</td>
-      <td>2013-01-01 05:00:00</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>554</td>
-      <td>600</td>
-      <td>-6</td>
-      <td>812</td>
-      <td>837</td>
-      <td>-25</td>
-      <td>DL</td>
-      <td>461</td>
-      <td>N668DN</td>
-      <td>LGA</td>
-      <td>ATL</td>
-      <td>116</td>
-      <td>762</td>
-      <td>6</td>
-      <td>0</td>
-      <td>2013-01-01 06:00:00</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>StructType(List(StructField(name,StringType,true),StructField(age,StringType,true),StructField(height,StringType,true)))</pre>
 </div>
 
 </div>
@@ -14779,61 +14609,13 @@ div.jp-OutputPrompt {
 
 </div>
 
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Exercise-4.1.">Exercise 4.1.<a class="anchor-link" href="#Exercise-4.1.">&#182;</a></h1>
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Example:-Dataset">Example: Dataset<a class="anchor-link" href="#Example:-Dataset">&#182;</a></h1><p>The dataset contains:</p>
-<ul>
-<li><code>year,month,day</code> Date of departure</li>
-<li><code>dep_time,arr_time</code> Actual departure and arrival times, local tz.</li>
-<li><code>sched_dep_time,sched_arr_time</code> Scheduled departure and arrival times, local time-zone.</li>
-<li><code>dep_delay,arr_delay</code> Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.</li>
-<li><code>hour,minute</code> Time of scheduled departure broken into hour and minutes.</li>
-<li><code>carrier</code> Two letter carrier abbreviation. </li>
-<li><code>tailnum</code> Plane tail number</li>
-<li><code>flight</code> Flight number</li>
-<li><code>origin,dest</code> Origin and destination. See airports for additional metadata.</li>
-<li><code>air_time</code> Amount of time spent in the air, in minutes</li>
-<li><code>distance</code> Distance between airports, in miles</li>
-<li><code>time_hour</code> Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be
-used to join flights data to weather data.</li>
-</ul>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Example:-Operations-used-on-a-DataFrame">Example: Operations used on a DataFrame<a class="anchor-link" href="#Example:-Operations-used-on-a-DataFrame">&#182;</a></h1><p>Some commenly used methods on DataFrame's include (not all).</p>
-<ul>
-<li><code>select(*cols)</code> Projects a set of expressions and returns a new DataFrame.</li>
-<li><code>withColumn(colName, col)</code> Returns a new DataFrame by adding a column or replacing the existing column that has the same name.</li>
-<li><code>where(condition)</code> / <code>filter(condition)</code> Filters rows using the given condition.</li>
-<li><code>orderBy(*cols, **kwargs)</code> Returns a new DataFrame sorted by the specified column(s).</li>
-<li><code>agg(*exprs)</code> Compute aggregates and returns the result as a DataFrame. Can be used on a grouped </li>
-<li><code>groupBy(*cols)</code> Groups the DataFrame using the specified columns, so we can run aggregation on them.
-DataFrame as well to do the operation by group.</li>
-</ul>
-<p>By chaining these simple DataFrame methods together in a pipeline one can achieve rather complex transformations, so it makes sense to memorize these transformation methods.</p>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Column-Expressions">Column Expressions<a class="anchor-link" href="#Column-Expressions">&#182;</a></h1><p>Besides methods on DataFrames one also use the <code>pyspark.sql.functions</code> module a lot, if you want to do any transformation you want to check if they're implemented here first, because they're optimized. And then, if the transformation is not implemented OR you can create it as an expression of the functions in this module, you can create it yourself.</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14841,10 +14623,36 @@ DataFrame as well to do the operation by group.</li>
 </div>
 </div>
 
-</div></section></section><section><section>
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>root
+ |-- name: string (nullable = true)
+ |-- age: string (nullable = true)
+ |-- height: string (nullable = true)
+
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="select(*cols)"><code>select(*cols)</code><a class="anchor-link" href="#select(*cols)">&#182;</a></h1><p>Projects a set of expressions and returns a new DataFrame.</p>
+<h1 id="Schema">Schema<a class="anchor-link" href="#Schema">&#182;</a></h1><p>A schema is a StructType made up of a number of fields, StructFields, that have a name, type, a Boolean flag which specifies whether that column can contain missing or null values, and, finally, users can optionally specify associated metadata with that column. The metadata is a way of storing information about this column (Spark uses this in its machine learning library).</p>
+<p>Here is how to create and enforce a specific schema on a DataFrame.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14853,13 +14661,22 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
-    <span class="n">flights</span>
-    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
-        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;air_time&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;mean_speed&#39;</span><span class="p">),</span>
-        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;arr_delay&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;dep_delay&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;gain&#39;</span><span class="p">),</span>
-    <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">types</span> <span class="k">as</span> <span class="n">T</span>
+
+<span class="n">manual_schema</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">StructType</span><span class="p">([</span>
+  <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;carrier&quot;</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">),</span>
+  <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">StringType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;hello&quot;</span><span class="p">:</span><span class="s2">&quot;world&quot;</span><span class="p">}),</span>
+<span class="p">])</span>
+<span class="n">airlines</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">spark</span>
+    <span class="o">.</span><span class="n">read</span>
+    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">manual_schema</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;FAILFAST&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/datasets/nycflights13/airlines.csv&quot;</span><span class="p">)</span>
 <span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">airlines</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14898,35 +14715,35 @@ DataFrame as well to do the operation by group.</li>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>mean_speed</th>
-      <th>gain</th>
+      <th>carrier</th>
+      <th>name</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>370.044053</td>
-      <td>9.0</td>
+      <td>9E</td>
+      <td>Endeavor Air Inc.</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>374.273128</td>
-      <td>16.0</td>
+      <td>AA</td>
+      <td>American Airlines Inc.</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>408.375000</td>
-      <td>31.0</td>
+      <td>AS</td>
+      <td>Alaska Airlines Inc.</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>516.721311</td>
-      <td>-17.0</td>
+      <td>B6</td>
+      <td>JetBlue Airways</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>394.137931</td>
-      <td>-19.0</td>
+      <td>DL</td>
+      <td>Delta Air Lines Inc.</td>
     </tr>
   </tbody>
 </table>
@@ -14939,10 +14756,10 @@ DataFrame as well to do the operation by group.</li>
 
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="withColumn(colName,-col)"><code>withColumn(colName, col)</code><a class="anchor-link" href="#withColumn(colName,-col)">&#182;</a></h1><p>Returns a new DataFrame by adding a column or replacing the existing column that has the same name</p>
+<h1 id="Schema">Schema<a class="anchor-link" href="#Schema">&#182;</a></h1><p>If the types in the data (at runtime) do not match the schema, Spark can throw an error, depending on how the <code>mode</code> option is set.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14951,220 +14768,25 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
-    <span class="n">flights</span>
-    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
-        <span class="s1">&#39;mean_speed&#39;</span><span class="p">,</span>
-        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;air_time&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
-    <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">types</span> <span class="k">as</span> <span class="n">T</span>
+
+<span class="n">manual_schema</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">StructType</span><span class="p">([</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;carrier&quot;</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">StringType</span><span class="p">(),</span> <span class="kc">False</span><span class="p">),</span>
+    <span class="n">T</span><span class="o">.</span><span class="n">StructField</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">ByteType</span><span class="p">(),</span> <span class="kc">True</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;hello&quot;</span><span class="p">:</span><span class="s2">&quot;world&quot;</span><span class="p">}),</span>
+<span class="p">])</span>
+<span class="n">airlines</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">spark</span>
+    <span class="o">.</span><span class="n">read</span>
+    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">manual_schema</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;header&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;FAILFAST&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;/datasets/nycflights13/airlines.csv&quot;</span><span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>day</th>
-      <th>dep_time</th>
-      <th>sched_dep_time</th>
-      <th>dep_delay</th>
-      <th>arr_time</th>
-      <th>sched_arr_time</th>
-      <th>arr_delay</th>
-      <th>carrier</th>
-      <th>flight</th>
-      <th>tailnum</th>
-      <th>origin</th>
-      <th>dest</th>
-      <th>air_time</th>
-      <th>distance</th>
-      <th>hour</th>
-      <th>minute</th>
-      <th>time_hour</th>
-      <th>mean_speed</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>517</td>
-      <td>515</td>
-      <td>2</td>
-      <td>830</td>
-      <td>819</td>
-      <td>11</td>
-      <td>UA</td>
-      <td>1545</td>
-      <td>N14228</td>
-      <td>EWR</td>
-      <td>IAH</td>
-      <td>227</td>
-      <td>1400</td>
-      <td>5</td>
-      <td>15</td>
-      <td>2013-01-01 05:00:00</td>
-      <td>370.044053</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>533</td>
-      <td>529</td>
-      <td>4</td>
-      <td>850</td>
-      <td>830</td>
-      <td>20</td>
-      <td>UA</td>
-      <td>1714</td>
-      <td>N24211</td>
-      <td>LGA</td>
-      <td>IAH</td>
-      <td>227</td>
-      <td>1416</td>
-      <td>5</td>
-      <td>29</td>
-      <td>2013-01-01 05:00:00</td>
-      <td>374.273128</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>542</td>
-      <td>540</td>
-      <td>2</td>
-      <td>923</td>
-      <td>850</td>
-      <td>33</td>
-      <td>AA</td>
-      <td>1141</td>
-      <td>N619AA</td>
-      <td>JFK</td>
-      <td>MIA</td>
-      <td>160</td>
-      <td>1089</td>
-      <td>5</td>
-      <td>40</td>
-      <td>2013-01-01 05:00:00</td>
-      <td>408.375000</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>544</td>
-      <td>545</td>
-      <td>-1</td>
-      <td>1004</td>
-      <td>1022</td>
-      <td>-18</td>
-      <td>B6</td>
-      <td>725</td>
-      <td>N804JB</td>
-      <td>JFK</td>
-      <td>BQN</td>
-      <td>183</td>
-      <td>1576</td>
-      <td>5</td>
-      <td>45</td>
-      <td>2013-01-01 05:00:00</td>
-      <td>516.721311</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2013</td>
-      <td>1</td>
-      <td>1</td>
-      <td>554</td>
-      <td>600</td>
-      <td>-6</td>
-      <td>812</td>
-      <td>837</td>
-      <td>-25</td>
-      <td>DL</td>
-      <td>461</td>
-      <td>N668DN</td>
-      <td>LGA</td>
-      <td>ATL</td>
-      <td>116</td>
-      <td>762</td>
-      <td>6</td>
-      <td>0</td>
-      <td>2013-01-01 06:00:00</td>
-      <td>394.137931</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="orderBy(*cols,-**kwargs)"><code>orderBy(*cols, **kwargs)</code><a class="anchor-link" href="#orderBy(*cols,-**kwargs)">&#182;</a></h1><p>Returns a new DataFrame sorted by the specified column(s).</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
-    <span class="n">flights</span>
-    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
-        <span class="s1">&#39;mean_speed&#39;</span><span class="p">,</span>
-        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;air_time&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
-    <span class="p">)</span>
-    <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;mean_speed&#39;</span><span class="p">))</span>
-<span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">airlines</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15183,10 +14805,272 @@ DataFrame as well to do the operation by group.</li>
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>An error occurred while calling o67.collectToPython.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 3.0 failed 1 times, most recent failure: Lost task 0.0 in stage 3.0 (TID 5) (192.168.0.14 executor driver): org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
+	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
+	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:173)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:345)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:131)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:497)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1439)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:500)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:309)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:254)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:396)
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
+	... 22 more
+Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Byte.parseByte(Byte.java:152)
+	at java.base/java.lang.Byte.parseByte(Byte.java:178)
+	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
+	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
+	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:238)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
+	... 25 more
+
+Driver stacktrace:
+	at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2258)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2207)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2206)
+	at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+	at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2206)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1079)
+	at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1079)
+	at scala.Option.foreach(Option.scala:407)
+	at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1079)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2445)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2387)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2376)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:868)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2196)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2217)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:2236)
+	at org.apache.spark.sql.execution.SparkPlan.executeTake(SparkPlan.scala:472)
+	at org.apache.spark.sql.execution.SparkPlan.executeTake(SparkPlan.scala:425)
+	at org.apache.spark.sql.execution.CollectLimitExec.executeCollect(limit.scala:47)
+	at org.apache.spark.sql.Dataset.$anonfun$collectToPython$1(Dataset.scala:3519)
+	at org.apache.spark.sql.Dataset.$anonfun$withAction$1(Dataset.scala:3687)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$5(SQLExecution.scala:103)
+	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:163)
+	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:90)
+	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)
+	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:64)
+	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:3685)
+	at org.apache.spark.sql.Dataset.collectToPython(Dataset.scala:3516)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:238)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
+<pre>21/10/10 13:33:10 ERROR Executor: Exception in task 0.0 in stage 3.0 (TID 5)
+org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
+	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
+	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:173)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:345)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:131)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:497)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1439)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:500)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:309)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:254)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:396)
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
+	... 22 more
+Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Byte.parseByte(Byte.java:152)
+	at java.base/java.lang.Byte.parseByte(Byte.java:178)
+	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
+	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
+	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:238)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
+	... 25 more
+21/10/10 13:33:10 WARN TaskSetManager: Lost task 0.0 in stage 3.0 (TID 5) (192.168.0.14 executor driver): org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
+	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
+	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:173)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:345)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:131)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:497)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1439)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:500)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:309)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:254)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:396)
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
+	... 22 more
+Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Byte.parseByte(Byte.java:152)
+	at java.base/java.lang.Byte.parseByte(Byte.java:178)
+	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
+	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
+	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:238)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
+	... 25 more
+
+21/10/10 13:33:10 ERROR TaskSetManager: Task 0 in stage 3.0 failed 1 times; aborting job
+</pre>
 </div>
 </div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="The-SparkSession">The SparkSession<a class="anchor-link" href="#The-SparkSession">&#182;</a></h1><p><code>SparkSession(sparkContext, jsparkSession=None)</code> The entry point to programming Spark with the Dataset and DataFrame API.</p>
+<p>The SparkSession is initialized automatically in a Databricks notebook and assigned to the variable <code>spark</code>.</p>
+<div class="highlight"><pre><span></span><span class="n">spark</span>
+</pre></div>
+<p><img src="images/spark_session.png" style="align: center;height: 200px; width: auto;"></img></p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="The-SparkSession">The SparkSession<a class="anchor-link" href="#The-SparkSession">&#182;</a></h1><p>The SparkSession contains the SparkContext.</p>
+<div class="highlight"><pre><span></span><span class="n">spark</span><span class="o">.</span><span class="n">sparkContext</span>
+</pre></div>
+<p><img src="images/spark_session_sparkcontext.png" style="align: center;height: 200px; width: auto;"></img></p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Example:-Dataset">Example: Dataset<a class="anchor-link" href="#Example:-Dataset">&#182;</a></h1><p>The <code>flights</code> dataset contains:</p>
+<ul>
+<li><code>year,month,day</code> Date of departure</li>
+<li><code>dep_time,arr_time</code> Actual departure and arrival times, local tz.</li>
+<li><code>sched_dep_time,sched_arr_time</code> Scheduled departure and arrival times, local time-zone.</li>
+<li><code>dep_delay,arr_delay</code> Departure and arrival delays, in minutes. Negative times represent early departures/arrivals.</li>
+<li><code>hour,minute</code> Time of scheduled departure broken into hour and minutes.</li>
+<li><code>carrier</code> Two letter carrier abbreviation. </li>
+<li><code>tailnum</code> Plane tail number</li>
+<li><code>flight</code> Flight number</li>
+<li><code>origin,dest</code> Origin and destination. See airports for additional metadata.</li>
+<li><code>air_time</code> Amount of time spent in the air, in minutes</li>
+<li><code>distance</code> Distance between airports, in miles</li>
+<li><code>time_hour</code> Scheduled date and hour of the flight as a POSIXct date. Along with origin, can be
+used to join flights data to weather data.</li>
+</ul>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="I/O">I/O<a class="anchor-link" href="#I/O">&#182;</a></h1><p>The SparkSession is often used to read data spark.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/datasets/nycflights13/flights.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
 
 <div class="jp-OutputArea-child">
 
@@ -15233,124 +15117,118 @@ DataFrame as well to do the operation by group.</li>
       <th>hour</th>
       <th>minute</th>
       <th>time_hour</th>
-      <th>mean_speed</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>2013</td>
-      <td>8</td>
-      <td>6</td>
-      <td>1849</td>
-      <td>1855</td>
-      <td>-6</td>
-      <td>2334</td>
-      <td>2050</td>
-      <td>None</td>
-      <td>MQ</td>
-      <td>3349</td>
-      <td>N514MQ</td>
-      <td>LGA</td>
-      <td>MSP</td>
-      <td>None</td>
-      <td>1020</td>
-      <td>18</td>
-      <td>55</td>
-      <td>2013-08-06 18:00:00</td>
-      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517</td>
+      <td>515</td>
+      <td>2</td>
+      <td>830</td>
+      <td>819</td>
+      <td>11</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01 05:00:00</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2013</td>
-      <td>8</td>
-      <td>6</td>
-      <td>None</td>
-      <td>1003</td>
-      <td>None</td>
-      <td>None</td>
-      <td>1135</td>
-      <td>None</td>
-      <td>FL</td>
-      <td>353</td>
-      <td>N906AT</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533</td>
+      <td>529</td>
+      <td>4</td>
+      <td>850</td>
+      <td>830</td>
+      <td>20</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
       <td>LGA</td>
-      <td>CAK</td>
-      <td>None</td>
-      <td>397</td>
-      <td>10</td>
-      <td>3</td>
-      <td>2013-08-06 10:00:00</td>
-      <td>NaN</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01 05:00:00</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2013</td>
-      <td>8</td>
-      <td>6</td>
-      <td>2018</td>
-      <td>1945</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542</td>
+      <td>540</td>
+      <td>2</td>
+      <td>923</td>
+      <td>850</td>
       <td>33</td>
-      <td>2348</td>
-      <td>2238</td>
-      <td>None</td>
-      <td>DL</td>
-      <td>1629</td>
-      <td>N3759</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
       <td>JFK</td>
-      <td>LAS</td>
-      <td>None</td>
-      <td>2248</td>
-      <td>19</td>
-      <td>45</td>
-      <td>2013-08-06 19:00:00</td>
-      <td>NaN</td>
+      <td>MIA</td>
+      <td>160</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01 05:00:00</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2013</td>
-      <td>8</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544</td>
+      <td>545</td>
+      <td>-1</td>
+      <td>1004</td>
+      <td>1022</td>
+      <td>-18</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183</td>
+      <td>1576</td>
       <td>5</td>
-      <td>None</td>
-      <td>1604</td>
-      <td>None</td>
-      <td>None</td>
-      <td>1748</td>
-      <td>None</td>
-      <td>EV</td>
-      <td>5432</td>
-      <td>N611QX</td>
-      <td>LGA</td>
-      <td>BNA</td>
-      <td>None</td>
-      <td>764</td>
-      <td>16</td>
-      <td>4</td>
-      <td>2013-08-05 16:00:00</td>
-      <td>NaN</td>
+      <td>45</td>
+      <td>2013-01-01 05:00:00</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2013</td>
-      <td>8</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554</td>
+      <td>600</td>
+      <td>-6</td>
+      <td>812</td>
+      <td>837</td>
+      <td>-25</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116</td>
+      <td>762</td>
       <td>6</td>
-      <td>None</td>
-      <td>1411</td>
-      <td>None</td>
-      <td>None</td>
-      <td>1702</td>
-      <td>None</td>
-      <td>B6</td>
-      <td>1883</td>
-      <td>N597JB</td>
-      <td>JFK</td>
-      <td>MCO</td>
-      <td>None</td>
-      <td>944</td>
-      <td>14</td>
-      <td>11</td>
-      <td>2013-08-06 14:00:00</td>
-      <td>NaN</td>
+      <td>0</td>
+      <td>2013-01-01 06:00:00</td>
     </tr>
   </tbody>
 </table>
@@ -15363,16 +15241,326 @@ DataFrame as well to do the operation by group.</li>
 
 </div>
 
-</div></section></section><section><section>
+</div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="where(condition)-/-filter(condition)"><code>where(condition)</code> / <code>filter(condition)</code><a class="anchor-link" href="#where(condition)-/-filter(condition)">&#182;</a></h1><p>Filters rows using the given condition.</p>
+<p>You can write the DataFrame to disk again after manipulations.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/tmp/flights.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;overwrite&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Types-and-Schema">Types and Schema<a class="anchor-link" href="#Types-and-Schema">&#182;</a></h1><p>The module <code>pyspark.sql.types</code> is the next most used submodule. It is used to create a schema, which is input to various functions, e.g. when initializing a DataFrame, and user defined functions (UDF).</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Example:-Operations-used-on-a-DataFrame">Example: Operations used on a DataFrame<a class="anchor-link" href="#Example:-Operations-used-on-a-DataFrame">&#182;</a></h1><p>Some commenly used methods on DataFrame's include (not all).</p>
+<ul>
+<li><code>select(*cols)</code> Projects a set of expressions and returns a new DataFrame.</li>
+<li><code>withColumn(colName, col)</code> Returns a new DataFrame by adding a column or replacing the existing column that has the same name.</li>
+<li><code>where(condition) / filter(condition)</code> Filters rows using the given condition.</li>
+<li><code>orderBy(*cols, **kwargs)</code> Returns a new DataFrame sorted by the specified column(s).</li>
+<li><code>agg(*exprs)</code> Compute aggregates and returns the result as a DataFrame. Can be used on a grouped </li>
+<li><code>groupBy(*cols)</code> Groups the DataFrame using the specified columns, so we can run aggregation on them.
+DataFrame as well to do the operation by group.</li>
+</ul>
+<p>By chaining these simple DataFrame methods together in a pipeline one can achieve rather complex transformations, so it makes sense to memorize these transformation methods.</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Transformations-and-Actions">Transformations and Actions<a class="anchor-link" href="#Transformations-and-Actions">&#182;</a></h1><p>DataFrame's also have transfomations and actions.</p>
+<p><img src="images/dataframe_transformation_and_actions.png" alt="Missing" style='max-width:80%; max-height:100%;'></p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Transformations:-Lazy">Transformations: Lazy<a class="anchor-link" href="#Transformations:-Lazy">&#182;</a></h1><p>Transformations  are  operations  that  Spark  evaluates  lazily. A  huge  advantage of the lazy evaluation scheme is that Spark can inspect your computational query and ascertain how it can optimize it.</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Narrow-and-Wide-Transformations">Narrow and Wide Transformations<a class="anchor-link" href="#Narrow-and-Wide-Transformations">&#182;</a></h1><p>Transformations  can  be  classified  as  having  either  narrow  dependencies  or  wide dependencies.  Any  transformation where  a  single  output  partition  can  be  computed from a single input partition is a narrow transformation.</p>
+<p>If a single output partition cannot be computed from a single input partition then a <strong>shuffle</strong> is required. This is called a wide transformation.</p>
+<p><img src="images/narrow_wide_dependencies.png" alt="Missing" style='max-width:80%; max-height:100%;'></p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Narrow-and-Wide-Transformations">Narrow and Wide Transformations<a class="anchor-link" href="#Narrow-and-Wide-Transformations">&#182;</a></h1><p><code>filter()</code>  and  <code>withColumn()</code>  represent  narrow  transformations  because they  can  operate  on  a  single  partition  and  produce  the  resulting  output  partition without any exchange of data.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">flights</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">]))</span>      <span class="c1"># narrow transformation.</span>
+<span class="n">flights</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;next_month&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># narrow transformation.</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>DataFrame[year: string, month: string, day: string, dep_time: string, sched_dep_time: string, dep_delay: string, arr_time: string, sched_arr_time: string, arr_delay: string, carrier: string, flight: string, tailnum: string, origin: string, dest: string, air_time: string, distance: string, hour: string, minute: string, time_hour: string, next_month: double]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><code>groupBy()</code>  or  <code>orderBy()</code>  instruct  Spark  to  perform  wide  transformations, where data from other partitions is read in, combined, and written to disk.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">groupBy</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">))</span>            <span class="c1"># wide transformation.</span>
+<span class="n">flights</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span>                              <span class="c1"># wide transformation.</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>DataFrame[year: string, month: string, day: string, dep_time: string, sched_dep_time: string, dep_delay: string, arr_time: string, sched_arr_time: string, arr_delay: string, carrier: string, flight: string, tailnum: string, origin: string, dest: string, air_time: string, distance: string, hour: string, minute: string, time_hour: string]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Column-Expressions">Column Expressions<a class="anchor-link" href="#Column-Expressions">&#182;</a></h1><p>Columns in Spark are similar to columns in a spreadsheet, R dataframe, or pandas DataFrame. You can select, manipulate, and remove columns from DataFrames and these operations are represented as expressions.</p>
+<p>There are a lot of different ways to construct and refer to columns but the two simplest ways are by using the col or column functions. To use either of these functions, you pass in a column name.</p>
+<p>You can also refer directly to the columns of a DataFrame, this can be useful when joining two DataFrame's with the same column name.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;someColumnName&quot;</span><span class="p">)</span>
+<span class="n">flights</span><span class="p">[</span><span class="s1">&#39;dest&#39;</span><span class="p">]</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>Column&lt;&#39;dest&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Column-Expressions">Column Expressions<a class="anchor-link" href="#Column-Expressions">&#182;</a></h1><p>Columns are expressions, but what is an expression? An expression is a set of transformations on one or more values in a record in a DataFrame.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(((</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;someCol&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">200</span><span class="p">)</span> <span class="o">-</span> <span class="mi">6</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;otherCol&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>Column&lt;&#39;((((someCol + 5) * 200) - 6) &lt; otherCol)&#39;&gt;</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Column-Expressions">Column Expressions<a class="anchor-link" href="#Column-Expressions">&#182;</a></h1><p>If you want to programmatically access columns, you can use the columns property to see all columns on a DataFrame.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">airlines</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[&#39;carrier&#39;, &#39;name&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="where(condition)-/-filter(condition)"><code>where(condition) / filter(condition)</code><a class="anchor-link" href="#where(condition)-/-filter(condition)">&#182;</a></h1><p>Filters rows using the given condition.</p>
+<p>To filter rows, we create an expression that evaluates to true or false. You then filter out the rows with an expression that is equal to false. The most common way to do this with DataFrames is to create either an expression as a String or build an expression by using a set of column manipulations.</p>
+<p>Use the comparison operators: <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;,</code> <code>&lt;=</code>, <code>!=</code> (not equal), <code>==</code> (equal) and <code>.eqNullSafe()</code>.</p>
+<p>Every boolean expression must be <code>True</code> in order for a row to be included in the output. For other types of combinations you'll need to use the Boolean operators: <code>&amp;</code> (and), <code>|</code> (or), <code>~</code> (not), <code>^</code> (XOR).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
@@ -15400,7 +15588,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 
 
 
@@ -15575,24 +15763,1747 @@ DataFrame as well to do the operation by group.</li>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="where(condition)-/-filter(condition)"><code>where(condition) / filter(condition)</code><a class="anchor-link" href="#where(condition)-/-filter(condition)">&#182;</a></h1><p>Instinctually, you might want to put multiple filters into the same expression. Although this is possible, it is not always useful, because Spark automatically performs all filtering operations at the same time regardless of the filter ordering. This means that if you want to specify multiple AND filters, just chain them sequentially and let Spark handle the rest.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">where</span><span class="p">(</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">where</span><span class="p">(</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>7</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2029</td>
+      <td>212</td>
+      <td>236</td>
+      <td>2359</td>
+      <td>157</td>
+      <td>B6</td>
+      <td>915</td>
+      <td>N653JB</td>
+      <td>JFK</td>
+      <td>SFO</td>
+      <td>315</td>
+      <td>2586</td>
+      <td>20</td>
+      <td>29</td>
+      <td>2013-07-01 20:00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>7</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2359</td>
+      <td>3</td>
+      <td>344</td>
+      <td>344</td>
+      <td>0</td>
+      <td>B6</td>
+      <td>1503</td>
+      <td>N805JB</td>
+      <td>JFK</td>
+      <td>SJU</td>
+      <td>200</td>
+      <td>1598</td>
+      <td>23</td>
+      <td>59</td>
+      <td>2013-07-01 23:00:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>7</td>
+      <td>1</td>
+      <td>29</td>
+      <td>2245</td>
+      <td>104</td>
+      <td>151</td>
+      <td>1</td>
+      <td>110</td>
+      <td>B6</td>
+      <td>234</td>
+      <td>N348JB</td>
+      <td>JFK</td>
+      <td>BTV</td>
+      <td>66</td>
+      <td>266</td>
+      <td>22</td>
+      <td>45</td>
+      <td>2013-07-01 22:00:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>7</td>
+      <td>1</td>
+      <td>43</td>
+      <td>2130</td>
+      <td>193</td>
+      <td>322</td>
+      <td>14</td>
+      <td>188</td>
+      <td>B6</td>
+      <td>1371</td>
+      <td>N794JB</td>
+      <td>LGA</td>
+      <td>FLL</td>
+      <td>143</td>
+      <td>1076</td>
+      <td>21</td>
+      <td>30</td>
+      <td>2013-07-01 21:00:00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>7</td>
+      <td>1</td>
+      <td>44</td>
+      <td>2150</td>
+      <td>174</td>
+      <td>300</td>
+      <td>100</td>
+      <td>120</td>
+      <td>AA</td>
+      <td>185</td>
+      <td>N324AA</td>
+      <td>JFK</td>
+      <td>LAX</td>
+      <td>297</td>
+      <td>2475</td>
+      <td>21</td>
+      <td>50</td>
+      <td>2013-07-01 21:00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Missing-Values">Missing Values<a class="anchor-link" href="#Missing-Values">&#182;</a></h1><p>When filtering <code>Null</code> values are evaluated to <code>False</code>, this can give surprising results.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+  <span class="n">flights</span>
+  <span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+  <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>21/10/10 13:33:16 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Missing-Values">Missing Values<a class="anchor-link" href="#Missing-Values">&#182;</a></h1><p>The above returns an empty DataFrame because it evaluates to <code>Null</code>.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="c1"># Boolean expressions returns Null.</span>
+        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;null_equal_null&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">==</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;null_equal_number&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;null_gt_number&#39;</span><span class="p">),</span>
+        
+        <span class="c1"># Arithmetic expression returns NaN.</span>
+        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">+</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;null_add_number&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">*</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;null_multiply_number&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span> <span class="o">/</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;null_division_number&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>21/10/10 13:33:16 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>null_equal_null</th>
+      <th>null_equal_number</th>
+      <th>null_gt_number</th>
+      <th>null_add_number</th>
+      <th>null_multiply_number</th>
+      <th>null_division_number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Missing-Values">Missing Values<a class="anchor-link" href="#Missing-Values">&#182;</a></h1><p>The <code>Column</code> functions <code>isNotNull()</code>, <code>isNull()</code> can be used to filter <code>Null</code> values away, replace them or whatever is the best action in the given analysis. A handy function in the <code>pyspark.sql.functions</code> module is <code>coalesce()</code>, it takes the first value in a series of column expressions which is not <code>Null</code>, analogous to the SQL function.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s1">&#39;null_literal&#39;</span><span class="p">,</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+      <span class="p">)</span>
+      <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+          <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">isNotNull</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;isNotNull&#39;</span><span class="p">),</span>
+          <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">isNull</span><span class="p">()</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;isNull&#39;</span><span class="p">),</span>
+          <span class="n">F</span><span class="o">.</span><span class="n">coalesce</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;coalesce&#39;</span><span class="p">),</span>
+          <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span><span class="o">.</span><span class="n">eqNullSafe</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;eqNullSafe&#39;</span><span class="p">),</span>
+      <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>21/10/10 13:33:16 WARN Column: Constructing trivially true equals predicate, &#39;null &lt;=&gt; null&#39;. Perhaps you need to use aliases.
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>isNotNull</th>
+      <th>isNull</th>
+      <th>coalesce</th>
+      <th>eqNullSafe</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Exercise-4.1.">Exercise 4.1.<a class="anchor-link" href="#Exercise-4.1.">&#182;</a></h1>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="select(*cols)-and-selectExpr(*cols)"><code>select(*cols)</code> and <code>selectExpr(*cols)</code><a class="anchor-link" href="#select(*cols)-and-selectExpr(*cols)">&#182;</a></h1><p><code>select()</code> and <code>selectExpr()</code> allow you to do the DataFrame equivalent of SQL queries on a table of data.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;air_time&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;mean_speed&#39;</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;arr_delay&#39;</span><span class="p">)</span> <span class="o">-</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;dep_delay&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;gain&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>mean_speed</th>
+      <th>gain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>370.044053</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>374.273128</td>
+      <td>16.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>408.375000</td>
+      <td>31.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>516.721311</td>
+      <td>-17.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>394.137931</td>
+      <td>-19.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Dropping-columns">Dropping columns<a class="anchor-link" href="#Dropping-columns">&#182;</a></h1><p>You likely already noticed that we can drop columns using <code>select()</code> e.g. select all but the variables you want to drop. However, there is also a dedicated method called <code>drop()</code>.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;month&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;day&#39;</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span>
+        <span class="s1">&#39;year&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>month</th>
+      <th>day</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="withColumn(colName,-col)"><code>withColumn(colName, col)</code><a class="anchor-link" href="#withColumn(colName,-col)">&#182;</a></h1><p>The <code>withColumn()</code> adds a new column, which is a function of existing columns. It takes two arguments: the column name and the expression that will create the value for that given row in the DataFrame.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s1">&#39;mean_speed&#39;</span><span class="p">,</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;air_time&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+      <th>mean_speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517</td>
+      <td>515</td>
+      <td>2</td>
+      <td>830</td>
+      <td>819</td>
+      <td>11</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>370.044053</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533</td>
+      <td>529</td>
+      <td>4</td>
+      <td>850</td>
+      <td>830</td>
+      <td>20</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>374.273128</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542</td>
+      <td>540</td>
+      <td>2</td>
+      <td>923</td>
+      <td>850</td>
+      <td>33</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>408.375000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544</td>
+      <td>545</td>
+      <td>-1</td>
+      <td>1004</td>
+      <td>1022</td>
+      <td>-18</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01 05:00:00</td>
+      <td>516.721311</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554</td>
+      <td>600</td>
+      <td>-6</td>
+      <td>812</td>
+      <td>837</td>
+      <td>-25</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01 06:00:00</td>
+      <td>394.137931</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Renaming-columns">Renaming columns<a class="anchor-link" href="#Renaming-columns">&#182;</a></h1><p>You can rename a column with the <code>withColumn()</code> function, e.g. <code>.withColumn(foo, foo)</code>, but it is better to use the dedicated function <code>ẁithColumnRenamed()</code> for this.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;dep_year&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>dep_year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>517</td>
+      <td>515</td>
+      <td>2</td>
+      <td>830</td>
+      <td>819</td>
+      <td>11</td>
+      <td>UA</td>
+      <td>1545</td>
+      <td>N14228</td>
+      <td>EWR</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1400</td>
+      <td>5</td>
+      <td>15</td>
+      <td>2013-01-01 05:00:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>533</td>
+      <td>529</td>
+      <td>4</td>
+      <td>850</td>
+      <td>830</td>
+      <td>20</td>
+      <td>UA</td>
+      <td>1714</td>
+      <td>N24211</td>
+      <td>LGA</td>
+      <td>IAH</td>
+      <td>227</td>
+      <td>1416</td>
+      <td>5</td>
+      <td>29</td>
+      <td>2013-01-01 05:00:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>542</td>
+      <td>540</td>
+      <td>2</td>
+      <td>923</td>
+      <td>850</td>
+      <td>33</td>
+      <td>AA</td>
+      <td>1141</td>
+      <td>N619AA</td>
+      <td>JFK</td>
+      <td>MIA</td>
+      <td>160</td>
+      <td>1089</td>
+      <td>5</td>
+      <td>40</td>
+      <td>2013-01-01 05:00:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>544</td>
+      <td>545</td>
+      <td>-1</td>
+      <td>1004</td>
+      <td>1022</td>
+      <td>-18</td>
+      <td>B6</td>
+      <td>725</td>
+      <td>N804JB</td>
+      <td>JFK</td>
+      <td>BQN</td>
+      <td>183</td>
+      <td>1576</td>
+      <td>5</td>
+      <td>45</td>
+      <td>2013-01-01 05:00:00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>1</td>
+      <td>554</td>
+      <td>600</td>
+      <td>-6</td>
+      <td>812</td>
+      <td>837</td>
+      <td>-25</td>
+      <td>DL</td>
+      <td>461</td>
+      <td>N668DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>116</td>
+      <td>762</td>
+      <td>6</td>
+      <td>0</td>
+      <td>2013-01-01 06:00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="sort(*cols,-**kwargs)-and-orderBy(*cols,-**kwargs)"><code>sort(*cols, **kwargs)</code> and <code>orderBy(*cols, **kwargs)</code><a class="anchor-link" href="#sort(*cols,-**kwargs)-and-orderBy(*cols,-**kwargs)">&#182;</a></h1><p>Arrange rows with <code>sort()</code> and <code>orderBy()</code>, they work equivalently. They accept both column expressions and strings as well as multiple columns. The default is to sort in ascending order.</p>
+<p>Returns a new DataFrame sorted by the specified column(s).</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s1">&#39;mean_speed&#39;</span><span class="p">,</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;air_time&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;mean_speed&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+      <th>mean_speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>6</td>
+      <td>1849</td>
+      <td>1855</td>
+      <td>-6</td>
+      <td>2334</td>
+      <td>2050</td>
+      <td>None</td>
+      <td>MQ</td>
+      <td>3349</td>
+      <td>N514MQ</td>
+      <td>LGA</td>
+      <td>MSP</td>
+      <td>None</td>
+      <td>1020</td>
+      <td>18</td>
+      <td>55</td>
+      <td>2013-08-06 18:00:00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>6</td>
+      <td>None</td>
+      <td>1003</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1135</td>
+      <td>None</td>
+      <td>FL</td>
+      <td>353</td>
+      <td>N906AT</td>
+      <td>LGA</td>
+      <td>CAK</td>
+      <td>None</td>
+      <td>397</td>
+      <td>10</td>
+      <td>3</td>
+      <td>2013-08-06 10:00:00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>6</td>
+      <td>2018</td>
+      <td>1945</td>
+      <td>33</td>
+      <td>2348</td>
+      <td>2238</td>
+      <td>None</td>
+      <td>DL</td>
+      <td>1629</td>
+      <td>N3759</td>
+      <td>JFK</td>
+      <td>LAS</td>
+      <td>None</td>
+      <td>2248</td>
+      <td>19</td>
+      <td>45</td>
+      <td>2013-08-06 19:00:00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>5</td>
+      <td>None</td>
+      <td>1604</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1748</td>
+      <td>None</td>
+      <td>EV</td>
+      <td>5432</td>
+      <td>N611QX</td>
+      <td>LGA</td>
+      <td>BNA</td>
+      <td>None</td>
+      <td>764</td>
+      <td>16</td>
+      <td>4</td>
+      <td>2013-08-05 16:00:00</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>8</td>
+      <td>6</td>
+      <td>None</td>
+      <td>1411</td>
+      <td>None</td>
+      <td>None</td>
+      <td>1702</td>
+      <td>None</td>
+      <td>B6</td>
+      <td>1883</td>
+      <td>N597JB</td>
+      <td>JFK</td>
+      <td>MCO</td>
+      <td>None</td>
+      <td>944</td>
+      <td>14</td>
+      <td>11</td>
+      <td>2013-08-06 14:00:00</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="sort(*cols,-**kwargs)-and-orderBy(*cols,-**kwargs)"><code>sort(*cols, **kwargs)</code> and <code>orderBy(*cols, **kwargs)</code><a class="anchor-link" href="#sort(*cols,-**kwargs)-and-orderBy(*cols,-**kwargs)">&#182;</a></h1><p>To sort descending you need to specify this explicitely.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+        <span class="s1">&#39;mean_speed&#39;</span><span class="p">,</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;distance&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;air_time&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;mean_speed&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">desc</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>dep_time</th>
+      <th>sched_dep_time</th>
+      <th>dep_delay</th>
+      <th>arr_time</th>
+      <th>sched_arr_time</th>
+      <th>arr_delay</th>
+      <th>carrier</th>
+      <th>flight</th>
+      <th>tailnum</th>
+      <th>origin</th>
+      <th>dest</th>
+      <th>air_time</th>
+      <th>distance</th>
+      <th>hour</th>
+      <th>minute</th>
+      <th>time_hour</th>
+      <th>mean_speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013</td>
+      <td>5</td>
+      <td>25</td>
+      <td>1709</td>
+      <td>1700</td>
+      <td>9</td>
+      <td>1923</td>
+      <td>1937</td>
+      <td>-14</td>
+      <td>DL</td>
+      <td>1499</td>
+      <td>N666DN</td>
+      <td>LGA</td>
+      <td>ATL</td>
+      <td>65</td>
+      <td>762</td>
+      <td>17</td>
+      <td>0</td>
+      <td>2013-05-25 17:00:00</td>
+      <td>703.384615</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013</td>
+      <td>7</td>
+      <td>2</td>
+      <td>1558</td>
+      <td>1513</td>
+      <td>45</td>
+      <td>1745</td>
+      <td>1719</td>
+      <td>26</td>
+      <td>EV</td>
+      <td>4667</td>
+      <td>N17196</td>
+      <td>EWR</td>
+      <td>MSP</td>
+      <td>93</td>
+      <td>1008</td>
+      <td>15</td>
+      <td>13</td>
+      <td>2013-07-02 15:00:00</td>
+      <td>650.322581</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013</td>
+      <td>5</td>
+      <td>13</td>
+      <td>2040</td>
+      <td>2025</td>
+      <td>15</td>
+      <td>2225</td>
+      <td>2226</td>
+      <td>-1</td>
+      <td>EV</td>
+      <td>4292</td>
+      <td>N14568</td>
+      <td>EWR</td>
+      <td>GSP</td>
+      <td>55</td>
+      <td>594</td>
+      <td>20</td>
+      <td>25</td>
+      <td>2013-05-13 20:00:00</td>
+      <td>648.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013</td>
+      <td>3</td>
+      <td>23</td>
+      <td>1914</td>
+      <td>1910</td>
+      <td>4</td>
+      <td>2045</td>
+      <td>2043</td>
+      <td>2</td>
+      <td>EV</td>
+      <td>3805</td>
+      <td>N12567</td>
+      <td>EWR</td>
+      <td>BNA</td>
+      <td>70</td>
+      <td>748</td>
+      <td>19</td>
+      <td>10</td>
+      <td>2013-03-23 19:00:00</td>
+      <td>641.142857</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013</td>
+      <td>1</td>
+      <td>12</td>
+      <td>1559</td>
+      <td>1600</td>
+      <td>-1</td>
+      <td>1849</td>
+      <td>1917</td>
+      <td>-28</td>
+      <td>DL</td>
+      <td>1902</td>
+      <td>N956DL</td>
+      <td>LGA</td>
+      <td>PBI</td>
+      <td>105</td>
+      <td>1035</td>
+      <td>16</td>
+      <td>0</td>
+      <td>2013-01-12 16:00:00</td>
+      <td>591.428571</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Exercise-4.2.">Exercise 4.2.<a class="anchor-link" href="#Exercise-4.2.">&#182;</a></h1>
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="agg(*exprs)"><code>agg(*exprs)</code><a class="anchor-link" href="#agg(*exprs)">&#182;</a></h1><p>Compute aggregates and returns the result as a DataFrame. Can be used on a grouped DataFrame.</p>
+<h1 id="agg(*exprs)"><code>agg(*exprs)</code><a class="anchor-link" href="#agg(*exprs)">&#182;</a></h1><p><code>agg()</code> can condense multiple records to a single record. The <code>agg()</code> method can be used in conjuction with <code>groupBy()</code> which changes the scope of each function from operating on the entire DataFrame to operating on it group-by-group. This is useful to compute aggregate statistics of the records in the DataFrame, to answer questions like: What is the average month a flight took place, average year, max year, a list of all years, a list of all months.</p>
 
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[26]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>                                                                                </pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>avg(month)</th>
+      <th>avg(year)</th>
+      <th>max(year)</th>
+      <th>collect_set(year)</th>
+      <th>collect_set(month)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>6.54851</td>
+      <td>2013.0</td>
+      <td>2013</td>
+      <td>[2013]</td>
+      <td>[3, 12, 1, 2, 5, 8, 11, 4, 9, 10, 7, 6]</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Aggregation-Functions">Aggregation Functions<a class="anchor-link" href="#Aggregation-Functions">&#182;</a></h1><p>Aggregation functions are available in the <code>pyspark.sql.functions</code> module. It is good practice to give this module an alias and refer to it that way.</p>
+<h1 id="Aggregation-Functions">Aggregation Functions<a class="anchor-link" href="#Aggregation-Functions">&#182;</a></h1><p>Aggregation functions are also available in the <code>pyspark.sql.functions</code> module. It is good practice to give this module an alias and refer to it that way.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
@@ -15612,7 +17523,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;row_count&quot;</span><span class="p">))</span>
@@ -15631,7 +17542,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 
 
 
@@ -15655,7 +17566,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;row_count&quot;</span><span class="p">)))</span>
@@ -15674,7 +17585,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 
 
 
@@ -15725,7 +17636,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">countDistinct</span><span class="p">(</span><span class="s2">&quot;year&quot;</span><span class="p">)))</span>
@@ -15755,7 +17666,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
 
 
 
@@ -15806,7 +17717,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s1">&#39;month&#39;</span><span class="p">)))</span>
@@ -15836,7 +17747,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
 
 
 
@@ -15889,7 +17800,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">&quot;arr_delay&quot;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;arr_delay&quot;</span><span class="p">)))</span>
@@ -15908,18 +17819,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
 
 
 
@@ -15973,7 +17873,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s2">&quot;tailnum&quot;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">collect_list</span><span class="p">(</span><span class="s2">&quot;tailnum&quot;</span><span class="p">))</span>
@@ -15992,7 +17892,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
 
 
 
@@ -16016,7 +17916,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
@@ -16055,7 +17955,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
 
 
 
@@ -16146,6 +18046,117 @@ DataFrame as well to do the operation by group.</li>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Relational-Data">Relational Data<a class="anchor-link" href="#Relational-Data">&#182;</a></h1><p><img src="images/joins.png" alt="Missing" class='pull-left' style='max-width:50%; max-height:80%;'>
+<img src="images/join_types.png" alt="Missing" class='pull-right' style='max-width:50%; max-height:100%;'></p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Relational-Data">Relational Data<a class="anchor-link" href="#Relational-Data">&#182;</a></h1><p>As an example if one wish to investigate the type of planes for each carrier one could do a left join on <code>tailnum</code>.</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">planes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">&#39;/datasets/nycflights13/planes.csv&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">planes</span><span class="p">,</span>
+        <span class="n">on</span><span class="o">=</span><span class="s1">&#39;tailnum&#39;</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="s1">&#39;carrier&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>UA</td>
+      <td>Fixed wing multi engine</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>UA</td>
+      <td>Fixed wing multi engine</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AA</td>
+      <td>Fixed wing multi engine</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B6</td>
+      <td>Fixed wing multi engine</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DL</td>
+      <td>Fixed wing multi engine</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Joins">Joins<a class="anchor-link" href="#Joins">&#182;</a></h1><p><code>join(other, on=None, how=None)</code> Joins with another DataFrame, using the given join expression.</p>
 <p>Parameters</p>
 <ul>
@@ -16155,7 +18166,6 @@ DataFrame as well to do the operation by group.</li>
 </ul>
 <p>Inner and left are the two most used join types, left_anti is useful for filtering.</p>
 <p>A cross join seems ideally for some mathematical computations, but is almost never useful in practice, it is too computationally expensive because the number of rows explodes, if there are m rows in the first dataframe and n in the other then the resulting dataframe will have m x n rows.</p>
-<p><img src="images/join_types.png" alt="Missing" style='max-width:50%; max-height:100%;'></p>
 
 </div>
 </div></section></section><section><section>
@@ -16166,20 +18176,31 @@ DataFrame as well to do the operation by group.</li>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Example:-User-Defined-Functions-(UDF)">Example: User Defined Functions (UDF)<a class="anchor-link" href="#Example:-User-Defined-Functions-(UDF)">&#182;</a></h1><p>With user defined functions you can distribute an arbitrary Python function to the executors and do some calculation in parrellel, it is more restricted compared to the lower level <code>rdd.map()</code>, in that you have to specify the output datatypes and you can't return whatever, but it works directly on DataFrames. It works like a map and not on groups, to do stuff on groups you have to use a UDAF, either a pandas UDAF or create one in Scale.</p>
-<p>You should only use an UDF if you can't achieve what you want with <code>pyspark.sql.functions</code>.</p>
+<h1 id="Example:-Dataset">Example: Dataset<a class="anchor-link" href="#Example:-Dataset">&#182;</a></h1><p>The <code>online_retail</code> dataset contains:</p>
+<p>This is a transnational data set which contains all the transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.The company mainly sells unique all-occasion gifts. Many customers of the company are wholesalers.</p>
+<ul>
+<li><code>InvoiceNo</code> Invoice number. Nominal, a 6-digit integral number uniquely assigned to each transaction. If this code starts with letter 'c', it indicates a cancellation.</li>
+<li><code>StockCode</code> Product (item) code. Nominal, a 5-digit integral number uniquely assigned to each distinct product.</li>
+<li><code>Description</code> Product (item) name. Nominal.</li>
+<li><code>Quantity</code> The quantities of each product (item) per transaction. Numeric.</li>
+<li><code>InvoiceDate</code> Invice Date and time. Numeric, the day and time when each transaction was generated.</li>
+<li><code>UnitPrice</code> Unit price. Numeric, Product price per unit in sterling.</li>
+<li><code>CustomerID</code> Customer number. Nominal, a 5-digit integral number uniquely assigned to each customer.</li>
+<li><code>Country</code> Country name. Nominal, the name of the country where each customer resides. </li>
+</ul>
 
 </div>
-</div>
+</div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Types-and-Schema">Types and Schema<a class="anchor-link" href="#Types-and-Schema">&#182;</a></h1><p>The module <code>pyspark.sql.types</code> is the next most used submodule. It is used to create a schema, which is input to various functions, e.g. when initializing a DataFrame, and user defined functions (UDF).</p>
+<h1 id="Example:-User-Defined-Functions-(UDF)">Example: User Defined Functions (UDF)<a class="anchor-link" href="#Example:-User-Defined-Functions-(UDF)">&#182;</a></h1><p>With user defined functions you can distribute an arbitrary Python function to the executors and do some calculation in parrellel, it is more restricted compared to the lower level <code>rdd.map()</code>, in that you have to specify the output datatypes and you can't return whatever, but it works directly on DataFrames. It works like a map and not on groups, to do stuff on groups you have to use a UDAF, either a pandas UDAF or create one in Scale.</p>
+<p>It is highly recommended to avoid UDFs in all situations, as they are dramatically less performant than native PySpark. In most situations, logic that seems to necessitate a UDF can be refactored to use only native PySpark functions (<code>pyspark.sql.functions</code>).</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
@@ -16212,7 +18233,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
 
 
 
@@ -16286,6 +18307,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Window-Functions">Window Functions<a class="anchor-link" href="#Window-Functions">&#182;</a></h1><p>You can also use window functions to carry out some unique aggregations by either computing some aggregation on a specific “window” of data, which you define by using a reference to the current data. This window specification determines which rows will be passed in to this function. Now this is a bit abstract and probably similar to a standard group-by, so let’s differentiate them a bit more.</p>
 <p>A group-by takes data, and every row can go only into one grouping. A window function calculates a return value for every input row of a table based on a group of rows, called a frame. Each row can fall into one or more frames. A common use case is to take a look at a rolling average of some value for which each row represents one day. If you were to do this, each row would end up in seven different frames. We cover defining frames a little later, but for your reference, Spark supports three kinds of window functions: ranking functions, analytic functions, and aggregate functions.</p>
+<p><img src="images/window_functions.png" alt="Missing" class='pull-right' style='max-width:50%; max-height:100%;'></p>
 
 </div>
 </div></section></section><section><section>
@@ -16310,7 +18332,7 @@ DataFrame as well to do the operation by group.</li>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="s2">&quot;dest&quot;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="s2">&quot;dest&quot;</span><span class="p">)))</span>
@@ -16340,7 +18362,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
 
 
 
