@@ -15236,7 +15236,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>55.1 ms ± 10.2 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<pre>56.7 ms ± 9.41 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre>
 </div>
 </div>
@@ -15271,7 +15271,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>[Stage 101:===================================================&gt;(993 + 4) / 1000]</pre>
+<pre>[Stage 101:==================================================&gt; (980 + 4) / 1000]</pre>
 </div>
 </div>
 
@@ -15282,7 +15282,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>8.01 s ± 582 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<pre>7.88 s ± 531 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -15314,6 +15314,11 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 <h1 id="Cache-and-Persist">Cache and Persist<a class="anchor-link" href="#Cache-and-Persist">&#182;</a></h1><p><code>.cache()</code> will store as many of the partitions read in memory across Spark executors as memory allows (see Figure 7-2). While a DataFrame may be fractionally cached, partitions cannot be fractionally cached (e.g., if you have 8 partitions but only 4.5 partitions can fit in memory, only 4 will be cached). However, if not all your partitions are cached, when you want to access the data again, the partitions that are not cached will have to be recomputed, slowing down your Spark job.</p>
 <p>The <code>.persist()</code> method does the same but allows for more fine graned control over how the data is cached.</p>
 
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Cache-and-Persist">Cache and Persist<a class="anchor-link" href="#Cache-and-Persist">&#182;</a></h1>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -15352,8 +15357,8 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/12 00:34:47 WARN TaskSetManager: Stage 102 contains a task of very large size (48971 KiB). The maximum recommended task size is 1000 KiB.
-21/10/12 00:34:55 WARN TaskSetManager: Stage 103 contains a task of very large size (48971 KiB). The maximum recommended task size is 1000 KiB.
+<pre>21/10/12 00:52:35 WARN TaskSetManager: Stage 102 contains a task of very large size (48971 KiB). The maximum recommended task size is 1000 KiB.
+21/10/12 00:52:43 WARN TaskSetManager: Stage 103 contains a task of very large size (48971 KiB). The maximum recommended task size is 1000 KiB.
 </pre>
 </div>
 </div>
@@ -15365,7 +15370,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Count took 8.037753105163574 Seconds
+<pre>Count took 7.788467168807983 Seconds
 </pre>
 </div>
 </div>
@@ -15388,7 +15393,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Count took 1.0570032596588135 Seconds
+<pre>Count took 0.9902698993682861 Seconds
 </pre>
 </div>
 </div>
@@ -15429,6 +15434,11 @@ ing your DataFrames include:</p>
 <li>An inexpensive transformation on a DataFrame not requiring frequent use, regardless of size.</li>
 </ul>
 
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Exercise-3.1.">Exercise 3.1.<a class="anchor-link" href="#Exercise-3.1.">&#182;</a></h1>
 </div>
 </div></section></section>
 </div>
