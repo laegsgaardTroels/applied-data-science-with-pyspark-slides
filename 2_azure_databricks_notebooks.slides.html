@@ -14394,7 +14394,6 @@ div.jp-OutputPrompt {
 <ol>
 <li>What is Databricks Notebooks and why are they useful.</li>
 <li>The course material.</li>
-<li>The Databricks CLI </li>
 </ol>
 
 </div>
@@ -14413,23 +14412,130 @@ div.jp-OutputPrompt {
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Databricks-Home">Databricks Home<a class="anchor-link" href="#Databricks-Home">&#182;</a></h1><p><img src="images/databricks_home.png" style="align: left;"></img></p>
+<h1 id="Databricks-Home">Databricks Home<a class="anchor-link" href="#Databricks-Home">&#182;</a></h1><p>We will be using the <strong>Databricks Notebook Community Edition</strong>.</p>
+<p><img src="images/databricks_home.png" style="align: left;"></img></p>
 
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="The-Course-Material">The Course Material<a class="anchor-link" href="#The-Course-Material">&#182;</a></h1><p>On the left hand side click on the: <img src="images/databricks_workspace.png" alt=""> buttom.</p>
-<p>Click on you user folder and then right click and select import.</p>
-<p>Click browse and select <code>introduction_to_pyspark_with_azure_databricks_notebooks.zip</code> from the Desktop.</p>
-<p><img src="images/import_material.png" style="align: left;"></img>
-<img src="images/browse_to_find_material.png" style="align: right;"></img></p>
+<h1 id="Exercise-2.1.">Exercise 2.1.<a class="anchor-link" href="#Exercise-2.1.">&#182;</a></h1><ol>
+<li>Create an account at: <a href="https://community.cloud.databricks.com/">https://community.cloud.databricks.com/</a>.</li>
+<li>On the left hand side click on the workspace buttom: <img src="images/databricks_workspace.png" alt=""></li>
+<li>Click on the <code>Shared</code> folder and then right click and select import.</li>
+<li>Click browse and select <code>introduction_to_pyspark_with_azure_databricks_notebooks.zip</code> from the Desktop.</li>
+<li>Create a new Notebook by going to in:<code>Shared/introduction_to_pyspark_with_azure_databricks_notebooks/2_azure_databricks_notebooks/</code>. Right click and select <code>create</code>. And call the new notebook <code>my_first_notebook</code>.</li>
+</ol>
+<p><img src="images/select_import.png" style="align: left;"></img></p>
 
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Exercise-2.1.">Exercise 2.1.<a class="anchor-link" href="#Exercise-2.1.">&#182;</a></h1>
+<h1 id="Course-Material">Course Material<a class="anchor-link" href="#Course-Material">&#182;</a></h1><p><img src="images/course_material.png" alt=""></p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Code-Cells">Code Cells<a class="anchor-link" href="#Code-Cells">&#182;</a></h1><p>If you write Python in a code cell and run it then it evaluates the code.</p>
+<p><img src="images/code_cell.png" alt=""></p>
+<p>Click <img src="images/cell_run.png" alt=""> to run the cell. You can run the entire notebook by clicking <img src="images/run_all.png" alt=""> at the top.</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Markdown">Markdown<a class="anchor-link" href="#Markdown">&#182;</a></h1><p>Write markdown in a code cell to document the steps in your notebook using the <code>%md</code> magic function.</p>
+<div class="highlight"><pre><span></span><span class="o">%</span><span class="n">md</span>
+
+<span class="n">Hello</span> <span class="n">World</span><span class="err">!</span>
+</pre></div>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Markdown:-Text-Formatting">Markdown: Text Formatting<a class="anchor-link" href="#Markdown:-Text-Formatting">&#182;</a></h1><div class="code" style="float: left; width: 45%">
+
+<code class="highlighter-rouge">This is the input</code>
+
+<hr>
+
+<code class="highlighter-rouge">`*This is Italic text*`</code>
+
+<code class="highlighter-rouge">`**This is Bold text**`</code>
+
+<code class="highlighter-rouge">`# First-level header`</code>
+
+<code class="highlighter-rouge">`## Second-level header`</code>
+
+
+</div><div style="float: right; width: 45%">
+
+<code class="highlighter-rouge">This is the output</code>
+
+<hr>
+
+*This is Italic text*
+
+**This is Bold text**
+
+# First-level header 
+
+## Second-level header
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Markdown:-Math-with-Latex">Markdown: Math with Latex<a class="anchor-link" href="#Markdown:-Math-with-Latex">&#182;</a></h1><div class="code" style="float: left; width: 45%">
+
+<code class="highlighter-rouge">This is the input</code>
+
+<hr>
+
+LaTeX math expressions inside a pair of dollar signs <code class="highlighter-rouge">$\alpha+\beta$</code> is inline.
+
+LaTeX math expressions inside a double pair of dollar signs is displayed
+
+<code class="highlighter-rouge">
+$$\frac{1}{n}\sum_{i=1}^nX_i$$
+</code>
+
+</div><div style="float: right; width: 45%">
+
+<code class="highlighter-rouge">This is the output</code>
+
+<hr>
+
+LaTeX math expressions inside a pair of dollar signs $\alpha+\beta$ is inline.
+
+LaTeX math expressions inside a double pair of dollar signs is displayed
+
+$$\frac{1}{n}\sum_{i=1}^nX_i$$
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="More-Magic-Functions">More Magic Functions<a class="anchor-link" href="#More-Magic-Functions">&#182;</a></h1><ul>
+<li><code>%md</code> Markdown</li>
+<li><code>%sql</code> SQL</li>
+<li><code>%scala</code> Scala</li>
+<li><code>%python</code> Python</li>
+<li><code>%r</code> R</li>
+<li><code>%sh</code> Shell</li>
+<li><code>%fs</code> Databricks File System</li>
+</ul>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Exercise-2.2.">Exercise 2.2.<a class="anchor-link" href="#Exercise-2.2.">&#182;</a></h1>
 </div>
 </div></section></section>
 </div>

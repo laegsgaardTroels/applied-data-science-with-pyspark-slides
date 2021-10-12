@@ -14591,10 +14591,10 @@ div.jp-OutputPrompt {
 <h1 id="Example:-Operations-used-on-an-RDD">Example: Operations used on an RDD<a class="anchor-link" href="#Example:-Operations-used-on-an-RDD">&#182;</a></h1><p>The RDD methods I've most commonly used are <code>collect()</code>, <code>map()</code>, <code>flatMap()</code>, <code>filter()</code> and <code>count()</code>.</p>
 <ul>
 <li><code>collect()</code> Return a list that contains all of the elements in this RDD. Note This method should only be used if the resulting array is expected to be small, as all the data is loaded into the driver’s memory.</li>
+<li><code>take(num)</code> does similar thing as <code>.collect()</code> but only collects <code>num</code> elements to the driver.</li>
 <li><code>map(f, preservesPartitioning=False)</code> Return a new RDD by applying a function to each element of this RDD.</li>
 <li><code>flatMap(f, preservesPartitioning=False)</code> Return a new RDD by first applying a function to all elements of this RDD, and then flattening the results. <code>flatMap()</code> can take a generator which can be super useful.</li>
 <li><code>filter(f)</code> Return a new RDD containing only the elements that satisfy a predicate.</li>
-<li><code>take(num)</code> does similar thing but only collects <code>num</code> elements to the driver.</li>
 <li><code>count()</code> Return the number of elements in this RDD</li>
 </ul>
 
@@ -15236,7 +15236,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>56.7 ms ± 9.41 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<pre>52.1 ms ± 5.07 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre>
 </div>
 </div>
@@ -15271,7 +15271,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>[Stage 101:==================================================&gt; (980 + 4) / 1000]</pre>
+<pre>[Stage 101:=================================================&gt;  (952 + 5) / 1000]</pre>
 </div>
 </div>
 
@@ -15282,7 +15282,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>7.88 s ± 531 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<pre>8.21 s ± 321 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre>
 </div>
 </div>
@@ -15357,8 +15357,8 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/12 00:52:35 WARN TaskSetManager: Stage 102 contains a task of very large size (48971 KiB). The maximum recommended task size is 1000 KiB.
-21/10/12 00:52:43 WARN TaskSetManager: Stage 103 contains a task of very large size (48971 KiB). The maximum recommended task size is 1000 KiB.
+<pre>21/10/13 00:30:10 WARN TaskSetManager: Stage 102 contains a task of very large size (48971 KiB). The maximum recommended task size is 1000 KiB.
+21/10/13 00:30:17 WARN TaskSetManager: Stage 103 contains a task of very large size (48971 KiB). The maximum recommended task size is 1000 KiB.
 </pre>
 </div>
 </div>
@@ -15370,7 +15370,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Count took 7.788467168807983 Seconds
+<pre>Count took 7.563512802124023 Seconds
 </pre>
 </div>
 </div>
@@ -15393,7 +15393,7 @@ Number of partitions: [[], [0], [], [1], [], [2], [], [3], [], [4], [], [5], [],
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Count took 0.9902698993682861 Seconds
+<pre>Count took 1.1013128757476807 Seconds
 </pre>
 </div>
 </div>
