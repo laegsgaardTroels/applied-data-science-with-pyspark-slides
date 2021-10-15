@@ -1,74 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- Using Bootstrap starter template: https://getbootstrap.com/docs/4.0/getting-started/introduction/-->
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="shortcut icon" type="image/png" href="/assets/images/2017-09-29-adaboost-the-original-boosting-algorithm/AdaBoostExampleData.png">
+---
+layout: default
+title: Introduction to PySpark with Azure Databricks Notebooks
+image: /assets/images/base/apache_spark.svg
+---
 
-        <title>Introduktion til PySpark med Azure Databricks Notebooks</title>
+Spark er et populært framework til processering af enorme mængder data, brugt bredt i industrien. Dette kursus vil give dig en kort introduktion til den populære Python API til Spark frameworket gennem brug af Azure Databricks Notebooks. <!--more--> 
+Målet med kurset er at hjælpe deltageren i gang med at anvende PySpark genenm interaktive lektioner i de dele af PySpark, man anvender mest i praksis som Data Scientist. 
 
-        <!-- Stylesheets -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<br>
+<br>
 
-        <!-- MathJax -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-            jax: ["input/TeX", "output/HTML-CSS"],
-            tex2jax: {
-              inlineMath: [ ['$', '$'], ["\\(", "\\)"] ],
-              displayMath: [ ['$$', '$$'], ["\\[", "\\]"] ],
-              processEscapes: true,
-              skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-            }
-            //,
-            //displayAlign: "left",
-            //displayIndent: "2em"
-          });
-        </script>
-        <script type="text/javascript" async
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
-        </script>
+Azure Databricks Notebooks vil derfor ikke være hovedemnet men kun platformen, som øvelserne vil laves i gennem kurset. Set-up og konfigurering af et cluster vil heller ikke være emnet for kurset.
 
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<br>
+<br>
 
-    </head>
-    <body>
-        <div class="container">
-            <div class="jumbotron mt-3">
-                <!-- 
-                <img src="images/course_logo.jpg" class="img-fluid" style= "height: 400px" alt="Responsive image">
-                <br>
-                <br>
-                -->
-                <h1>Introduktion til PySpark med Azure Databricks Notebooks</h1>
-                <p>Spark er et populært framework til processering af enorme mængder data, brugt bredt i industrien. Dette kursus vil give dig en kort introduktion til den populære Python API til Spark frameworket gennem brug af Azure Databricks Notebooks. Målet med kurset er at hjælpe deltageren i gang med at anvende PySpark genenm interaktive lektioner i de dele af PySpark, man anvender mest i praksis som Data Scientist.</p>
-                <p>Azure Databricks Notebooks vil derfor ikke være hovedemnet men kun platformen, som øvelserne vil laves i gennem kurset. Set-up og konfigurering af et cluster vil heller ikke være emnet for kurset.</p>
-                <h4>Deltagerprofil</h4>
-                <p>
-                    Du søger en introduktion til PySpark, så du kan starte med at anvende dette i dit daglige arbejde.
-                    Forudsætninger
+<h4>Deltagerprofil</h4>
 
-                    Du har erfaring med programmering gennem dit daglige arbejde med data eller fra din uddannelse og har en grundlæggende matematisk forståelse. Grundlæggende kendskab til Python eller SQL vil også være nyttigt.
-                </p>
-                <h4>Indhold</h4>
-                <p>Se slides her:</p>
-                <ol>
-                    <li><a href="1_introduction.slides.html">Introduction</a> Introduction to the Course.</li>
-                    <li><a href="2_azure_databricks_notebooks.slides.html">Azure Databricks Notebooks</a> Introduktion til Spark Azure Databricks Notebooks.</li>
-                    <li><a href="3_spark.slides.html">Spark</a> Introduktion til Spark.</li>
-                    <li><a href="4_spark_sql.slides.html">Spark SQL</a> DataFrame API'en. Spark SQL. Data Aggregation. Window Functions. User Defined Functions</li>
-                    <li><a href="5_spark_ml.slides.html">Spark ML</a> Machine Learning med pyspark.ml.</li>
-                </ol>
-            </div>
-        </div>
+Du søger en introduktion til PySpark, så du kan starte med at anvende dette i dit daglige arbejde.
+Forudsætninger
 
-        <!-- JavaScript -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+Du har erfaring med programmering gennem dit daglige arbejde med data eller fra din uddannelse og har en grundlæggende matematisk forståelse. Grundlæggende kendskab til Python eller SQL vil også være nyttigt.
 
-    </body>
-</html>
+<br>
+<br>
+
+<h4>Indhold</h4>
+
+Se slides her:
+
+<ol>
+    <li><a href="1_introduction.slides.html">Introduction</a> Introduction to the Course.</li>
+    <li><a href="2_azure_databricks_notebooks.slides.html">Azure Databricks Notebooks</a> Introduktion til Spark Azure Databricks Notebooks.</li>
+    <li><a href="3_spark.slides.html">Spark</a> Introduktion til Spark.</li>
+    <li><a href="4_spark_sql.slides.html">Spark SQL</a> DataFrame API'en. Spark SQL. Data Aggregation. Window Functions. User Defined Functions</li>
+    <li><a href="5_spark_ml.slides.html">Spark ML</a> Machine Learning med pyspark.ml.</li>
+</ol>
