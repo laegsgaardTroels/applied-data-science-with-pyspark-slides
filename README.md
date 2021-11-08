@@ -1,4 +1,4 @@
-# Introduktion til PySpark med Azure Databricks Notebooks
+# Applied Data Science with PySpark
 
 The slides for the course.
 
