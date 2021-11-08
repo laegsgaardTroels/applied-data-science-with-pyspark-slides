@@ -14805,111 +14805,9 @@ div.jp-OutputPrompt {
     <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/13 01:39:42 ERROR Executor: Exception in task 0.0 in stage 3.0 (TID 5)
-org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
-	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
-	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
-	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)
-	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:173)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
-	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
-	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:345)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
-	at org.apache.spark.scheduler.Task.run(Task.scala:131)
-	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:497)
-	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1439)
-	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:500)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:309)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:254)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:396)
-	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
-	... 22 more
-Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.base/java.lang.Integer.parseInt(Integer.java:652)
-	at java.base/java.lang.Byte.parseByte(Byte.java:152)
-	at java.base/java.lang.Byte.parseByte(Byte.java:178)
-	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
-	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
-	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:151)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:151)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:238)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:151)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
-	... 25 more
-21/10/13 01:39:42 WARN TaskSetManager: Lost task 0.0 in stage 3.0 (TID 5) (172.20.2.78 executor driver): org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
-	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
-	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
-	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)
-	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:173)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
-	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
-	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:345)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
-	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
-	at org.apache.spark.scheduler.Task.run(Task.scala:131)
-	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:497)
-	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1439)
-	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:500)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
-	at java.base/java.lang.Thread.run(Thread.java:829)
-Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:309)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:254)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:396)
-	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
-	... 22 more
-Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.base/java.lang.Integer.parseInt(Integer.java:652)
-	at java.base/java.lang.Byte.parseByte(Byte.java:152)
-	at java.base/java.lang.Byte.parseByte(Byte.java:178)
-	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
-	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
-	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:151)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:151)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:238)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:151)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
-	... 25 more
-
-21/10/13 01:39:43 ERROR TaskSetManager: Task 0 in stage 3.0 failed 1 times; aborting job
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>An error occurred while calling o67.collectToPython.
-: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 3.0 failed 1 times, most recent failure: Lost task 0.0 in stage 3.0 (TID 5) (172.20.2.78 executor driver): org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
+: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 3.0 failed 1 times, most recent failure: Lost task 0.0 in stage 3.0 (TID 5) (192.168.0.14 executor driver): org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
 	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
 	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
 	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
@@ -14998,6 +14896,108 @@ Driver stacktrace:
 	at py4j.GatewayConnection.run(GatewayConnection.java:238)
 	at java.base/java.lang.Thread.run(Thread.java:829)
 
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>21/11/08 20:44:26 ERROR Executor: Exception in task 0.0 in stage 3.0 (TID 5)
+org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
+	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
+	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:173)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:345)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:131)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:497)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1439)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:500)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:309)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:254)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:396)
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
+	... 22 more
+Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Byte.parseByte(Byte.java:152)
+	at java.base/java.lang.Byte.parseByte(Byte.java:178)
+	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
+	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
+	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:238)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
+	... 25 more
+21/11/08 20:44:26 WARN TaskSetManager: Lost task 0.0 in stage 3.0 (TID 5) (192.168.0.14 executor driver): org.apache.spark.SparkException: Malformed records are detected in record parsing. Parse Mode: FAILFAST. To process malformed records as null result, try setting the option &#39;mode&#39; as &#39;PERMISSIVE&#39;.
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:70)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:400)
+	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:484)
+	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:490)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:173)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:93)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:458)
+	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:345)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:898)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:898)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:373)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:337)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+	at org.apache.spark.scheduler.Task.run(Task.scala:131)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:497)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1439)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:500)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:309)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:254)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:396)
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
+	... 22 more
+Caused by: java.lang.NumberFormatException: For input string: &#34;Endeavor Air Inc.&#34;
+	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.base/java.lang.Integer.parseInt(Integer.java:652)
+	at java.base/java.lang.Byte.parseByte(Byte.java:152)
+	at java.base/java.lang.Byte.parseByte(Byte.java:178)
+	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
+	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
+	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:238)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:151)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:291)
+	... 25 more
+
+21/11/08 20:44:26 ERROR TaskSetManager: Task 0 in stage 3.0 failed 1 times; aborting job
 </pre>
 </div>
 </div>
@@ -15796,17 +15796,6 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
 
 
@@ -16010,7 +15999,7 @@ DataFrame as well to do the operation by group.</li>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/13 01:39:50 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
+<pre>21/11/08 20:44:31 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
 </pre>
 </div>
 </div>
@@ -16119,7 +16108,7 @@ DataFrame as well to do the operation by group.</li>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/13 01:39:50 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
+<pre>21/11/08 20:44:31 WARN Column: Constructing trivially true equals predicate, &#39;null = null&#39;. Perhaps you need to use aliases.
 </pre>
 </div>
 </div>
@@ -16259,7 +16248,7 @@ DataFrame as well to do the operation by group.</li>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>21/10/13 01:39:50 WARN Column: Constructing trivially true equals predicate, &#39;null &lt;=&gt; null&#39;. Perhaps you need to use aliases.
+<pre>21/11/08 20:44:32 WARN Column: Constructing trivially true equals predicate, &#39;null &lt;=&gt; null&#39;. Perhaps you need to use aliases.
 </pre>
 </div>
 </div>
@@ -17815,17 +17804,6 @@ DataFrame as well to do the operation by group.</li>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>                                                                                </pre>
-</div>
-</div>
 
 <div class="jp-OutputArea-child">
 
