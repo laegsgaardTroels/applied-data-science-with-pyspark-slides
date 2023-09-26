@@ -7515,12 +7515,6 @@ main {
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -7842,119 +7836,8 @@ main {
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>23/09/24 15:19:52 ERROR Executor: Exception in task 0.0 in stage 4.0 (TID 9)
-org.apache.spark.SparkException: Encountered error while reading file file:///datasets/nycflights13/airlines.csv. Details:
-	at org.apache.spark.sql.errors.QueryExecutionErrors$.cannotReadFilesError(QueryExecutionErrors.scala:877)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:307)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:125)
-	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:460)
-	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:388)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:888)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:888)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:364)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:328)
-	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:92)
-	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:161)
-	at org.apache.spark.scheduler.Task.run(Task.scala:139)
-	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:554)
-	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1529)
-	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:557)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
-Caused by: org.apache.spark.SparkException: [MALFORMED_RECORD_IN_PARSING] Malformed records are detected in record parsing: [9E,null].
-Parse Mode: FAILFAST. To process malformed records as null result, try setting the option 'mode' as 'PERMISSIVE'.
-	at org.apache.spark.sql.errors.QueryExecutionErrors$.malformedRecordsDetectedInRecordParsingError(QueryExecutionErrors.scala:1764)
-	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:69)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:456)
-	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:486)
-	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:492)
-	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:460)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:125)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:297)
-	... 17 more
-Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: "Endeavor Air Inc."
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:365)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:307)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:452)
-	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
-	... 23 more
-Caused by: java.lang.NumberFormatException: For input string: "Endeavor Air Inc."
-	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.lang.Integer.parseInt(Integer.java:580)
-	at java.lang.Byte.parseByte(Byte.java:149)
-	at java.lang.Byte.parseByte(Byte.java:175)
-	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
-	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
-	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:183)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:183)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:291)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:183)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:346)
-	... 26 more
-23/09/24 15:19:52 WARN TaskSetManager: Lost task 0.0 in stage 4.0 (TID 9) (172.20.10.3 executor driver): org.apache.spark.SparkException: Encountered error while reading file file:///datasets/nycflights13/airlines.csv. Details:
-	at org.apache.spark.sql.errors.QueryExecutionErrors$.cannotReadFilesError(QueryExecutionErrors.scala:877)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:307)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:125)
-	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:460)
-	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:388)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:888)
-	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:888)
-	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
-	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:364)
-	at org.apache.spark.rdd.RDD.iterator(RDD.scala:328)
-	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:92)
-	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:161)
-	at org.apache.spark.scheduler.Task.run(Task.scala:139)
-	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:554)
-	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1529)
-	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:557)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-	at java.lang.Thread.run(Thread.java:748)
-Caused by: org.apache.spark.SparkException: [MALFORMED_RECORD_IN_PARSING] Malformed records are detected in record parsing: [9E,null].
-Parse Mode: FAILFAST. To process malformed records as null result, try setting the option 'mode' as 'PERMISSIVE'.
-	at org.apache.spark.sql.errors.QueryExecutionErrors$.malformedRecordsDetectedInRecordParsingError(QueryExecutionErrors.scala:1764)
-	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:69)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:456)
-	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:486)
-	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:492)
-	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:460)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:125)
-	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:297)
-	... 17 more
-Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: "Endeavor Air Inc."
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:365)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:307)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:452)
-	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
-	... 23 more
-Caused by: java.lang.NumberFormatException: For input string: "Endeavor Air Inc."
-	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.lang.Integer.parseInt(Integer.java:580)
-	at java.lang.Byte.parseByte(Byte.java:149)
-	at java.lang.Byte.parseByte(Byte.java:175)
-	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
-	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
-	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:183)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:183)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:291)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:183)
-	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:346)
-	... 26 more
-
-23/09/24 15:19:52 ERROR TaskSetManager: Task 0 in stage 4.0 failed 1 times; aborting job
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>An error occurred while calling o74.collectToPython.
+<pre>An error occurred while calling o75.collectToPython.
 : org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 4.0 failed 1 times, most recent failure: Lost task 0.0 in stage 4.0 (TID 9) (172.20.10.3 executor driver): org.apache.spark.SparkException: Encountered error while reading file file:///datasets/nycflights13/airlines.csv. Details:
 	at org.apache.spark.sql.errors.QueryExecutionErrors$.cannotReadFilesError(QueryExecutionErrors.scala:877)
 	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:307)
@@ -8108,6 +7991,65 @@ Caused by: java.lang.NumberFormatException: For input string: "Endeavor Air Inc.
 </pre>
 </div>
 </div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>23/09/26 17:37:03 ERROR Executor: Exception in task 0.0 in stage 4.0 (TID 9)
+org.apache.spark.SparkException: Encountered error while reading file file:///datasets/nycflights13/airlines.csv. Details:
+	at org.apache.spark.sql.errors.QueryExecutionErrors$.cannotReadFilesError(QueryExecutionErrors.scala:877)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:307)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:125)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:460)
+	at org.apache.spark.sql.execution.SparkPlan.$anonfun$getByteArrayRdd$1(SparkPlan.scala:388)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2(RDD.scala:888)
+	at org.apache.spark.rdd.RDD.$anonfun$mapPartitionsInternal$2$adapted(RDD.scala:888)
+	at org.apache.spark.rdd.MapPartitionsRDD.compute(MapPartitionsRDD.scala:52)
+	at org.apache.spark.rdd.RDD.computeOrReadCheckpoint(RDD.scala:364)
+	at org.apache.spark.rdd.RDD.iterator(RDD.scala:328)
+	at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:92)
+	at org.apache.spark.TaskContext.runTaskWithListeners(TaskContext.scala:161)
+	at org.apache.spark.scheduler.Task.run(Task.scala:139)
+	at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:554)
+	at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1529)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:557)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.spark.SparkException: [MALFORMED_RECORD_IN_PARSING] Malformed records are detected in record parsing: [9E,null].
+Parse Mode: FAILFAST. To process malformed records as null result, try setting the option 'mode' as 'PERMISSIVE'.
+	at org.apache.spark.sql.errors.QueryExecutionErrors$.malformedRecordsDetectedInRecordParsingError(QueryExecutionErrors.scala:1764)
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:69)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$2(UnivocityParser.scala:456)
+	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:486)
+	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:492)
+	at scala.collection.Iterator$$anon$10.hasNext(Iterator.scala:460)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.hasNext(FileScanRDD.scala:125)
+	at org.apache.spark.sql.execution.datasources.FileScanRDD$$anon$1.nextIterator(FileScanRDD.scala:297)
+	... 17 more
+Caused by: org.apache.spark.sql.catalyst.util.BadRecordException: java.lang.NumberFormatException: For input string: "Endeavor Air Inc."
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:365)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$parse$2(UnivocityParser.scala:307)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser$.$anonfun$parseIterator$1(UnivocityParser.scala:452)
+	at org.apache.spark.sql.catalyst.util.FailureSafeParser.parse(FailureSafeParser.scala:60)
+	... 23 more
+Caused by: java.lang.NumberFormatException: For input string: "Endeavor Air Inc."
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Byte.parseByte(Byte.java:149)
+	at java.lang.Byte.parseByte(Byte.java:175)
+	at scala.collection.immutable.StringLike.toByte(StringLike.scala:294)
+	at scala.collection.immutable.StringLike.toByte$(StringLike.scala:294)
+	at scala.collection.immutable.StringOps.toByte(StringOps.scala:33)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2(UnivocityParser.scala:183)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$2$adapted(UnivocityParser.scala:183)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.nullSafeDatum(UnivocityParser.scala:291)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.$anonfun$makeConverter$1(UnivocityParser.scala:183)
+	at org.apache.spark.sql.catalyst.csv.UnivocityParser.org$apache$spark$sql$catalyst$csv$UnivocityParser$$convert(UnivocityParser.scala:346)
+	... 26 more
+23/09/26 17:37:03 ERROR TaskSetManager: Task 0 in stage 4.0 failed 1 times; aborting job
+</pre>
+</div>
+</div>
 </div>
 </div>
 </div></section></section><section><section>
@@ -8184,7 +8126,11 @@ used to join flights data to weather data.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">flights</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">'/datasets/nycflights13/flights.csv'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">flights</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span>
+    <span class="s1">'/datasets/nycflights13/flights.csv'</span><span class="p">,</span>
+    <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">inferSchema</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -8366,7 +8312,7 @@ used to join flights data to weather data.</li>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ac2ffbaf-9704-4c9e-bf0e-3063c4038f8d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ac2ffbaf-9704-4c9e-bf0e-3063c4038f8d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8376,18 +8322,6 @@ used to join flights data to weather data.</li>
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">write</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">'/tmp/flights.csv'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'overwrite'</span><span class="p">)</span>
 </pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
 </div>
 </div>
 </div>
@@ -8454,8 +8388,8 @@ DataFrame as well to do the operation by group.</li>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Narrow-and-Wide-Transformations">Narrow and Wide Transformations<a class="anchor-link" href="#Narrow-and-Wide-Transformations">¶</a></h2><p>Transformations  can  be  classified  as  having  either  narrow  dependencies  or  wide dependencies.  Any  transformation where  a  single  output  partition  can  be  computed from a single input partition is a narrow transformation.</p>
-<p>If a single output partition cannot be computed from a single input partition then a <strong>shuffle</strong> is required. This is called a wide transformation.</p>
+<h2 id="Narrow-and-Wide-Transformations">Narrow and Wide Transformations<a class="anchor-link" href="#Narrow-and-Wide-Transformations">¶</a></h2><p>Transformations  can  be  classified  as  having  either  narrow  dependencies  or  wide dependencies.  Any  transformation where  a  single  output  partition  can  be  computed from a single input partition is a <strong>narrow transformation</strong>.</p>
+<p>If a single output partition cannot be computed from a single input partition then a <strong>shuffle</strong> is required. This is called a <strong>wide transformation</strong>.</p>
 <img alt="Missing" src="images/narrow_wide_dependencies.png" style="max-width:80%; max-height:100%;"/>
 </div>
 </div>
@@ -8495,7 +8429,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>DataFrame[year: string, month: string, day: string, dep_time: string, sched_dep_time: string, dep_delay: string, arr_time: string, sched_arr_time: string, arr_delay: string, carrier: string, flight: string, tailnum: string, origin: string, dest: string, air_time: string, distance: string, hour: string, minute: string, time_hour: string, next_month: double]</pre>
+<pre>DataFrame[year: int, month: int, day: int, dep_time: int, sched_dep_time: int, dep_delay: int, arr_time: int, sched_arr_time: int, arr_delay: int, carrier: string, flight: int, tailnum: string, origin: string, dest: string, air_time: int, distance: int, hour: int, minute: int, time_hour: timestamp, next_month: int]</pre>
 </div>
 </div>
 </div>
@@ -8533,7 +8467,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>DataFrame[year: string, month: string, day: string, dep_time: string, sched_dep_time: string, dep_delay: string, arr_time: string, sched_arr_time: string, arr_delay: string, carrier: string, flight: string, tailnum: string, origin: string, dest: string, air_time: string, distance: string, hour: string, minute: string, time_hour: string]</pre>
+<pre>DataFrame[year: int, month: int, day: int, dep_time: int, sched_dep_time: int, dep_delay: int, arr_time: int, sched_arr_time: int, arr_delay: int, carrier: string, flight: int, tailnum: string, origin: string, dest: string, air_time: int, distance: int, hour: int, minute: int, time_hour: timestamp]</pre>
 </div>
 </div>
 </div>
@@ -9091,13 +9025,6 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>23/09/24 15:19:58 WARN Column: Constructing trivially true equals predicate, 'null = null'. Perhaps you need to use aliases.
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -9190,13 +9117,6 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>23/09/24 15:19:59 WARN Column: Constructing trivially true equals predicate, 'null = null'. Perhaps you need to use aliases.
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -9316,13 +9236,6 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>23/09/24 15:19:59 WARN Column: Constructing trivially true equals predicate, 'null &lt;=&gt; null'. Perhaps you need to use aliases.
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[19]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -9468,27 +9381,27 @@ DataFrame as well to do the operation by group.</li>
 <tr>
 <th>0</th>
 <td>370.044053</td>
-<td>9.0</td>
+<td>9</td>
 </tr>
 <tr>
 <th>1</th>
 <td>374.273128</td>
-<td>16.0</td>
+<td>16</td>
 </tr>
 <tr>
 <th>2</th>
 <td>408.375000</td>
-<td>31.0</td>
+<td>31</td>
 </tr>
 <tr>
 <th>3</th>
 <td>516.721311</td>
-<td>-17.0</td>
+<td>-17</td>
 </tr>
 <tr>
 <th>4</th>
 <td>394.137931</td>
-<td>-19.0</td>
+<td>-19</td>
 </tr>
 </tbody>
 </table>
@@ -10027,12 +9940,6 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -10082,18 +9989,18 @@ DataFrame as well to do the operation by group.</li>
 <td>2013</td>
 <td>9</td>
 <td>25</td>
-<td>None</td>
+<td>NaN</td>
 <td>1755</td>
-<td>None</td>
-<td>None</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>1932</td>
-<td>None</td>
+<td>NaN</td>
 <td>EV</td>
 <td>5287</td>
 <td>N722EV</td>
 <td>LGA</td>
 <td>MSN</td>
-<td>None</td>
+<td>NaN</td>
 <td>812</td>
 <td>17</td>
 <td>55</td>
@@ -10105,18 +10012,18 @@ DataFrame as well to do the operation by group.</li>
 <td>2013</td>
 <td>4</td>
 <td>27</td>
-<td>None</td>
+<td>NaN</td>
 <td>1345</td>
-<td>None</td>
-<td>None</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>1700</td>
-<td>None</td>
+<td>NaN</td>
 <td>AA</td>
 <td>117</td>
 <td>N335AA</td>
 <td>JFK</td>
 <td>LAX</td>
-<td>None</td>
+<td>NaN</td>
 <td>2475</td>
 <td>13</td>
 <td>45</td>
@@ -10128,18 +10035,18 @@ DataFrame as well to do the operation by group.</li>
 <td>2013</td>
 <td>12</td>
 <td>12</td>
-<td>None</td>
+<td>NaN</td>
 <td>700</td>
-<td>None</td>
-<td>None</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>855</td>
-<td>None</td>
+<td>NaN</td>
 <td>EV</td>
 <td>4099</td>
 <td>N14558</td>
 <td>EWR</td>
 <td>STL</td>
-<td>None</td>
+<td>NaN</td>
 <td>872</td>
 <td>7</td>
 <td>0</td>
@@ -10151,18 +10058,18 @@ DataFrame as well to do the operation by group.</li>
 <td>2013</td>
 <td>4</td>
 <td>27</td>
-<td>None</td>
+<td>NaN</td>
 <td>800</td>
-<td>None</td>
-<td>None</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>1135</td>
-<td>None</td>
+<td>NaN</td>
 <td>AA</td>
 <td>59</td>
 <td>N328AA</td>
 <td>JFK</td>
 <td>SFO</td>
-<td>None</td>
+<td>NaN</td>
 <td>2586</td>
 <td>8</td>
 <td>0</td>
@@ -10172,24 +10079,24 @@ DataFrame as well to do the operation by group.</li>
 <tr>
 <th>4</th>
 <td>2013</td>
-<td>1</td>
-<td>1</td>
-<td>1740</td>
-<td>1745</td>
-<td>-5</td>
-<td>2158</td>
-<td>2020</td>
-<td>None</td>
-<td>MQ</td>
-<td>4413</td>
-<td>N739MQ</td>
-<td>LGA</td>
-<td>XNA</td>
-<td>None</td>
-<td>1147</td>
+<td>6</td>
 <td>17</td>
-<td>45</td>
-<td>2013-01-01 17:00:00</td>
+<td>1751.0</td>
+<td>1629</td>
+<td>82.0</td>
+<td>2118.0</td>
+<td>1823</td>
+<td>NaN</td>
+<td>EV</td>
+<td>5818</td>
+<td>N14573</td>
+<td>EWR</td>
+<td>MEM</td>
+<td>NaN</td>
+<td>946</td>
+<td>16</td>
+<td>29</td>
+<td>2013-06-17 16:00:00</td>
 <td>NaN</td>
 </tr>
 </tbody>
@@ -10450,12 +10357,6 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -10491,7 +10392,7 @@ DataFrame as well to do the operation by group.</li>
 <td>2013.0</td>
 <td>2013</td>
 <td>[2013]</td>
-<td>[3, 12, 1, 2, 5, 8, 11, 4, 9, 10, 6, 7]</td>
+<td>[12, 9, 1, 5, 2, 6, 3, 10, 7, 4, 11, 8]</td>
 </tr>
 </tbody>
 </table>
@@ -10532,7 +10433,7 @@ DataFrame as well to do the operation by group.</li>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="count">count<a class="anchor-link" href="#count">¶</a></h2><p>The first function worth going over is count, except in this example it will perform as a transformation instead of an action. In this case, we can do one of two things: specify a specific column to count, or all the columns by using count(<em>) or count(1) to represent that we want to count every row as the literal one, when performing a count(</em>), Spark will count null values (including rows containing all nulls). However, when counting an individual column, Spark will not count the null values.</p>
+<h2 id="F.count(col)"><code>F.count(col)</code><a class="anchor-link" href="#F.count(col)">¶</a></h2><p>The first function worth going over is count, except in this example it will perform as a transformation instead of an action. In this case, we can do one of two things: specify a specific column to count, or all the columns by using count(<em>) or count(1) to represent that we want to count every row as the literal one, when performing a count(</em>), Spark will count null values (including rows containing all nulls). However, when counting an individual column, Spark will not count the null values.</p>
 </div>
 </div>
 </div>
@@ -10544,7 +10445,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"row_count"</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">flights</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"row_count"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -10581,7 +10482,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"row_count"</span><span class="p">)))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'*'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"row_count"</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -10634,7 +10535,7 @@ DataFrame as well to do the operation by group.</li>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="countDistinct">countDistinct<a class="anchor-link" href="#countDistinct">¶</a></h2><p>Sometimes, the total number is not relevant; rather, it’s the number of unique groups that you want. To get this number, you can use the countDistinct function. This is a bit more relevant for individual column.</p>
+<h2 id="F.countDistinct(col,-*cols)"><code>F.countDistinct(col, *cols)</code><a class="anchor-link" href="#F.countDistinct(col,-*cols)">¶</a></h2><p>Sometimes, the total number is not relevant; rather, it’s the number of unique groups that you want. To get this number, you can use the countDistinct function. This is a bit more relevant for individual column.</p>
 </div>
 </div>
 </div>
@@ -10646,7 +10547,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">countDistinct</span><span class="p">(</span><span class="s2">"year"</span><span class="p">)))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">countDistinct</span><span class="p">(</span><span class="s2">"year"</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -10677,7 +10578,7 @@ DataFrame as well to do the operation by group.</li>
 <thead>
 <tr style="text-align: right;">
 <th></th>
-<th>count(DISTINCT year)</th>
+<th>count(year)</th>
 </tr>
 </thead>
 <tbody>
@@ -10699,7 +10600,7 @@ DataFrame as well to do the operation by group.</li>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="min-and-max">min and max<a class="anchor-link" href="#min-and-max">¶</a></h2><p>To extract the minimum and maximum values from a DataFrame, use the min and max functions</p>
+<h2 id="F.min(col)-and-F.max(col)"><code>F.min(col)</code> and <code>F.max(col)</code><a class="anchor-link" href="#F.min(col)-and-F.max(col)">¶</a></h2><p>To extract the minimum and maximum values from a DataFrame, use the min and max functions</p>
 </div>
 </div>
 </div>
@@ -10711,7 +10612,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s1">'month'</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s1">'month'</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -10750,7 +10651,7 @@ DataFrame as well to do the operation by group.</li>
 <tr>
 <th>0</th>
 <td>1</td>
-<td>9</td>
+<td>12</td>
 </tr>
 </tbody>
 </table>
@@ -10766,7 +10667,7 @@ DataFrame as well to do the operation by group.</li>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="sum">sum<a class="anchor-link" href="#sum">¶</a></h2><p>Another simple task is to add all the values in a row using the sum function</p>
+<h2 id="F.sum(col)"><code>F.sum(col)</code><a class="anchor-link" href="#F.sum(col)">¶</a></h2><p>Another simple task is to add all the values in a row using the sum function</p>
 </div>
 </div>
 </div>
@@ -10778,7 +10679,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"arr_delay"</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">"arr_delay"</span><span class="p">)))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">flights</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"arr_delay"</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">"arr_delay"</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -10816,7 +10717,7 @@ DataFrame as well to do the operation by group.</li>
 <tbody>
 <tr>
 <th>0</th>
-<td>2257174.0</td>
+<td>2257174</td>
 <td>6.895377</td>
 </tr>
 </tbody>
@@ -10902,12 +10803,6 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>                                                                                </pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
@@ -11118,6 +11013,119 @@ DataFrame as well to do the operation by group.</li>
 </div>
 </div>
 </div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9f2005ec-cbf3-4b26-bdea-475012af02ee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Relational-Data">Relational Data<a class="anchor-link" href="#Relational-Data">¶</a></h2><p>One can use a <code>.alias(col)</code> to reference columns in a particular DataFrame.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ca3a05ae-6602-4fb6-933b-2e6915fb8e1d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">planes</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">csv</span><span class="p">(</span><span class="s1">'/datasets/nycflights13/planes.csv'</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span>
+    <span class="n">flights</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'flights'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">planes</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'planes'</span><span class="p">),</span>
+        <span class="n">on</span><span class="o">=</span><span class="s1">'tailnum'</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s1">'left'</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'flights.year'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'flights_year'</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'planes.year'</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">'planes_year'</span><span class="p">),</span>
+        <span class="s1">'carrier'</span><span class="p">,</span>
+        <span class="s1">'type'</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>flights_year</th>
+<th>planes_year</th>
+<th>carrier</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>2013</td>
+<td>1999</td>
+<td>UA</td>
+<td>Fixed wing multi engine</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2013</td>
+<td>1998</td>
+<td>UA</td>
+<td>Fixed wing multi engine</td>
+</tr>
+<tr>
+<th>2</th>
+<td>2013</td>
+<td>1990</td>
+<td>AA</td>
+<td>Fixed wing multi engine</td>
+</tr>
+<tr>
+<th>3</th>
+<td>2013</td>
+<td>2012</td>
+<td>B6</td>
+<td>Fixed wing multi engine</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2013</td>
+<td>1991</td>
+<td>DL</td>
+<td>Fixed wing multi engine</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=77c5ab68">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -11133,6 +11141,302 @@ DataFrame as well to do the operation by group.</li>
 </ul>
 <p>Inner and left are the two most used join types, left_anti is useful for filtering.</p>
 <p>A cross join seems ideally for some mathematical computations, but is almost never useful in practice, it is too computationally expensive because the number of rows explodes, if there are m rows in the first dataframe and n in the other then the resulting dataframe will have m x n rows.</p>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3115e169-919e-41d0-b236-8d6dd2e32249">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Repartition">Repartition<a class="anchor-link" href="#Repartition">¶</a></h2><p><code>.repartition(numPartitions, *cols)</code> changes the number of partitions.</p>
+<h4 id="Hash-Partitioning">Hash Partitioning<a class="anchor-link" href="#Hash-Partitioning">¶</a></h4><p>The partitioner used by the <code>.repartition(numPartitions, *cols)</code> function is hash partitioning. Hash partitioning roughly assign each row to the partition:</p>
+<div class="highlight"><pre><span></span><span class="n">F</span><span class="o">.</span><span class="n">hash</span><span class="p">(</span><span class="o">*</span><span class="n">cols</span><span class="p">)</span> <span class="o">%</span> <span class="n">numPartitions</span>
+</pre></div>
+<p>If you repartition by a column it is roughly equivalent to indexing the data by the column in a relational database.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=58460d06-bb8d-4272-9c02-bf39943533ae">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'month'</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of Partitions"</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">rdd</span><span class="o">.</span><span class="n">getNumPartitions</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Number of Partitions 3
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8912ba2-23f4-45f3-9b48-a99eaf05cd4a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Repartition">Repartition<a class="anchor-link" href="#Repartition">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=619dd01f-caae-409a-b5d0-581125651d56">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+  <span class="n">df</span>
+  <span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s1">'month'</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s1">'partition'</span><span class="p">,</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">spark_partition_id</span><span class="p">()</span>
+  <span class="p">)</span>
+  <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span>
+    <span class="s1">'month'</span><span class="p">,</span>
+    <span class="s1">'partition'</span>
+  <span class="p">)</span>
+  <span class="o">.</span><span class="n">count</span><span class="p">()</span>
+  <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>month</th>
+<th>partition</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1</td>
+<td>43</td>
+<td>27004</td>
+</tr>
+<tr>
+<th>1</th>
+<td>2</td>
+<td>174</td>
+<td>24951</td>
+</tr>
+<tr>
+<th>2</th>
+<td>3</td>
+<td>51</td>
+<td>28834</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4</td>
+<td>102</td>
+<td>28330</td>
+</tr>
+<tr>
+<th>4</th>
+<td>5</td>
+<td>66</td>
+<td>28796</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f8a10d13-eeb6-48bc-b999-681f476a98d6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Repartition">Repartition<a class="anchor-link" href="#Repartition">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=581e8771-8265-4e10-866e-511585a5bf6e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Assume we have a lot of observations in month 9, this is called <strong>data skew</strong>. Data skew is a condition in which a table’s data is unevenly distributed among partitions in the cluster. Data skew can severely downgrade performance of queries, especially those with joins. Joins between big tables require shuffling data and the skew can lead to an extreme imbalance of work in the cluster.</p>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ec16d961-6a0c-4c50-b99e-12308fd59846">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Repartition">Repartition<a class="anchor-link" href="#Repartition">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9368dfa0-9b72-486d-a6c8-00c8db5bad21">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+  <span class="n">flights</span>
+  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s1">'month'</span><span class="p">,</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">when</span><span class="p">(</span>
+      <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">,</span>
+      <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">otherwise</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">'month'</span><span class="p">))</span>
+  <span class="p">)</span>
+  <span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="s1">'month'</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s1">'partition'</span><span class="p">,</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">spark_partition_id</span><span class="p">()</span>
+  <span class="p">)</span>
+  <span class="o">.</span><span class="n">groupBy</span><span class="p">(</span>
+    <span class="s1">'month'</span><span class="p">,</span>
+    <span class="s1">'partition'</span>
+  <span class="p">)</span>
+  <span class="o">.</span><span class="n">count</span><span class="p">()</span>
+  <span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>month</th>
+<th>partition</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>9</td>
+<td>89</td>
+<td>252484</td>
+</tr>
+<tr>
+<th>1</th>
+<td>10</td>
+<td>122</td>
+<td>28889</td>
+</tr>
+<tr>
+<th>2</th>
+<td>11</td>
+<td>163</td>
+<td>27268</td>
+</tr>
+<tr>
+<th>3</th>
+<td>12</td>
+<td>24</td>
+<td>28135</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3b8ad41b-4bc4-4368-bf05-580b305d8720">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Repartition---Recommendations">Repartition - Recommendations<a class="anchor-link" href="#Repartition---Recommendations">¶</a></h2><p>I recommend you use:</p>
+<ol>
+<li>parquet files (a binary file format, use <code>spark.read.parquet</code> and <code>df.write.parquet</code>)</li>
+<li>Aim of a file size when writing to disk of around 1GB</li>
+<li>File size over 128MB to avoid the <strong>small file problem</strong></li>
+<li>Use repartition keys that are uniformly distributed.</li>
+</ol>
 </div>
 </div>
 </div>
@@ -11153,7 +11457,7 @@ DataFrame as well to do the operation by group.</li>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
@@ -11181,7 +11485,7 @@ DataFrame as well to do the operation by group.</li>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
